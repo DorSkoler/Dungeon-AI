@@ -1,0 +1,26 @@
+﻿  ArmourBearer.cpp
+C:\Users\User\Desktop\Final_Project\vs2017test\Definitions.h(27,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Arsenal.cpp
+C:\Users\User\Desktop\Final_Project\vs2017test\Arsenal.cpp(41,27): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\Final_Project\vs2017test\Arsenal.cpp(41,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  Bullet.cpp
+  Grenade.cpp
+  Magazine.cpp
+  main.cpp
+C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(43,27): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(48,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(429,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  NPC.cpp
+C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(20,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(21,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(22,35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(22,21): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  Pharmacy.cpp
+C:\Users\User\Desktop\Final_Project\vs2017test\Pharmacy.cpp(54,27): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\Final_Project\vs2017test\Pharmacy.cpp(54,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  Room.cpp
+  Soldier.cpp
+C:\Users\User\Desktop\Final_Project\vs2017test\Definitions.h(20,31): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  State.cpp
+  Generating Code...
+  vs2017test.vcxproj -> C:\Users\User\Desktop\Final_Project\Debug\vs2017test.exe
