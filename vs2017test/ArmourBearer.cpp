@@ -4,6 +4,10 @@
 #include "Definitions.h"
 #include <math.h>
 
+ArmourBearer::ArmourBearer()
+{
+}
+
 ArmourBearer::ArmourBearer(double cx, double cy, int t)
 {
 	init();

@@ -3,6 +3,10 @@
 #include "glut.h"
 #include <math.h>
 
+Soldier::Soldier()
+{
+}
+
 Soldier::Soldier(double cx, double cy, int t)
 {
 	init();
@@ -14,7 +18,6 @@ Soldier::Soldier(double cx, double cy, int t)
 void Soldier::init()
 {
 	hp = MAX_HP_SOLDIER;
-	magazines[MAX_MAGAZINE_SOLDIER];
 	grenade_count = MAX_GRENADES_SOLDIER;
 }
 

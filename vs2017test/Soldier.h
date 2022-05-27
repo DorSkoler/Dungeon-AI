@@ -13,7 +13,7 @@ private:
 
 
 public:
-    
+    Soldier();
     Soldier(double x, double y, int t);
     void init();
     void DrawMe();

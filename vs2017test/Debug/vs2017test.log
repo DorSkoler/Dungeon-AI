@@ -1,5 +1,5 @@
 ﻿  main.cpp
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(43,27): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(48,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(257,46): error C2661: 'Grenade::Grenade': no overloaded function takes 2 arguments
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(439,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(48,27): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(53,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(489,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  vs2017test.vcxproj -> C:\Users\User\Desktop\Final_Project\Debug\vs2017test.exe

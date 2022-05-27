@@ -10,6 +10,7 @@ class ArmourBearer :
 private:
     
 public:
+    ArmourBearer();
     ArmourBearer(double x, double y, int t);
     ~ArmourBearer();
 
