@@ -15,7 +15,7 @@ void Soldier::init()
 {
 	hp = MAX_HP_SOLDIER;
 	magazines[MAX_MAGAZINE_SOLDIER];
-	grenades[MAX_GRENADES_SOLDIER];
+	grenade_count = MAX_GRENADES_SOLDIER;
 }
 
 void Soldier::DrawMe()
@@ -30,4 +30,23 @@ void Soldier::DrawMe()
 	glVertex2d(x - 0.7 + 2 * hp / MAX_HP_SOLDIER, y + 3);
 	glEnd();
 	glLineWidth(1);
+}
+
+bool Soldier::Move(int maze[MSZ][MSZ])
+{
+	double dx, dy, nextX = x, nextY = y;
+	dx = cos(direction_angle);
+	dy = sin(direction_angle);
+	nextX = x + dx * SPEED_SOLDIER;
+	nextY = y + dy * SPEED_SOLDIER;
+	if (maze[(int)y][(int)x] != WALL)
+	{
+		maze[(int)y][(int)x] = spaceOrPass;
+		spaceOrPass = maze[(int)nextY][(int)nextX];
+		maze[(int)nextY][(int)nextX] = SOLDIER;
+		x = nextX;
+		y = nextY;
+		return true;
+	}
+	return false;
 }

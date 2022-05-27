@@ -18,5 +18,11 @@ public:
     void init();
     void DrawMe();
 
+    bool Move(int maze[MSZ][MSZ]);
+    void shootBullet();
+    void throwGrenade();
+    void relodeMagazine();
+    
+
 };
 

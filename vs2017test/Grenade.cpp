@@ -5,13 +5,13 @@ Grenade::Grenade()
 {
 }
 
-Grenade::Grenade(double x, double y)
+Grenade::Grenade(double x, double y, int t)
 {
 	double teta = 2 * 3.14 / NUM_BULLETS_PER_GRENADE;
 	this->x = x;
 	this->y = y;
 	for (int i = 0; i < NUM_BULLETS_PER_GRENADE; i++)
-		bullets[i] = new Bullet(x, y, i*teta);
+		bullets[i] = new Bullet(x, y, i*teta, t);
 
 	isExploded = false;
 }

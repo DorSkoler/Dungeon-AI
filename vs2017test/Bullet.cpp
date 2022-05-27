@@ -8,12 +8,13 @@ Bullet::Bullet()
 }
 
 // angle must be in radians
-Bullet::Bullet(double x, double y, double angle)
+Bullet::Bullet(double x, double y, double angle, int t)
 {
 	this->x = x;
 	this->y = y;
 	direction_angle = angle;
 	isMoving = false;
+	team = t;
 }
 
 void Bullet::show()
@@ -26,7 +27,6 @@ void Bullet::show()
 	glVertex2d(x , y - 0.5);
 	glEnd();
 }
-
 
 Bullet::~Bullet()
 {

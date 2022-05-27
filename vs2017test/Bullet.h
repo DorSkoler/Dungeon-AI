@@ -9,9 +9,10 @@ private:
 	double x, y;
 	double direction_angle;
 	bool isMoving;
+	int team;
 public:
 	Bullet();
-	Bullet(double x, double y, double angle);
+	Bullet(double x, double y, double angle, int t);
 	void show();
 	~Bullet();
 	void Fire() { isMoving = true; }

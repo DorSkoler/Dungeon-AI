@@ -4,6 +4,8 @@
 #include "Bullet.h"
 #include "Magazine.h"
 #include "Grenade.h"
+#include <stdlib.h>
+#include <vector>
 
 class NPC
 {
@@ -13,15 +15,23 @@ protected:
 	double dx, dy; // vector to the target
 	int hp;
 	int team;
-	Magazine *magazines;
-	Grenade *grenades;
+	double direction_angle = (rand() % 360) * 3.14 / 180;
+	int spaceOrPass = SPACE;
+	int grenade_count;
+	std::vector<Magazine*> magazines;
 	/*State* pCurrentState;
 	State* pInterruptedState;*/
 public:
 	void DrawMe();
 	int getHp() { return hp; };
+	double getTargetX() { return targetX; };
+	double getTargetY() { return targetY; };
+	int getMagazinesLeft() { return magazines.size(); };
+	int getGrenadeCount() { return grenade_count; };
 
 	void setHp(int _hp) { hp = _hp; };
-	void setXandY(int cx, int cy) { x = cx; y = cy; };
+	void setTargetX(int cx) { targetX = cx; };
+	void setTargetY(int cy) { targetY = cy; };
+
 };
 

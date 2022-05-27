@@ -12,8 +12,9 @@ private:
 	bool isExploded;
 public:
 	Grenade();
-	Grenade(double x, double y);
+	Grenade(double x, double y, int t);
 	~Grenade();
+	void setXandY(int cx, int cy) {  }
 	bool getIsExploded() { return isExploded; }
 	void Explode();
 	void Exploding(int maze[MSZ][MSZ]);

@@ -260,6 +260,12 @@ void CreateSecurityMap()
 
 }
 
+void resetVisual() {
+	for (int i = 0; i < MSZ; i++)
+		for (int j = 0; j < MSZ; j++)
+			security_map[j][i] = 0;
+}
+
 
 void ShowMaze() 
 {
@@ -399,6 +405,10 @@ void menu(int choice)
 	{
 		CreateVisibilityMap();
 	}
+	else if (choice == 5) // reset security map
+	{
+		resetVisual();
+	}
 
 	
 }
@@ -444,6 +454,7 @@ void main(int argc, char* argv[])
 	glutAddMenuEntry("Throw Grenade", 2);
 	glutAddMenuEntry("Create Security Map", 3);
 	glutAddMenuEntry("Create Visibility Map", 4);
+	glutAddMenuEntry("reset Security Map", 5);
 
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 

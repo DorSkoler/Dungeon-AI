@@ -53,3 +53,5 @@ void NPC::DrawMe()
 	glVertex2d(x + 1, y);
 	glEnd();
 }
+
+
