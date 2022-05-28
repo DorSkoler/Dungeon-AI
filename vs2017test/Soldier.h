@@ -1,28 +1,30 @@
 #pragma once
 #include "NPC.h"
-#include "Definitions.h"
-#include "Bullet.h"
-#include "Magazine.h"
+#include "glut.h"
+#include <math.h>
+#include <string>
 
 
 
-class Soldier :
+class Soldier : 
     public NPC
 {
 private:
-
-
+    bool isShooting = false;
+    Grenade *currentGrenade = nullptr;
 public:
     Soldier();
-    Soldier(double x, double y, int t);
+    Soldier(double cx, double cy, int t);
     void init();
-    void DrawMe();
+    void DrawMe(const char* string);
+    bool getIsShooting() { return isShooting; };
+    void DrawMyHp();
 
     bool Move(int maze[MSZ][MSZ]);
+    Bullet* MoveBullets(int maze[MSZ][MSZ]);
+    void showBullets();
     void shootBullet();
-    void throwGrenade();
-    void relodeMagazine();
-    
-
+    void throwGrenade(int maze[MSZ][MSZ]);
+    //void relodeMagazine();
 };
 

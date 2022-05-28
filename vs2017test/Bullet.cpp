@@ -1,6 +1,7 @@
 #include "Bullet.h"
 #include "glut.h"
 #include <math.h>
+#include <iostream>
 
 
 Bullet::Bullet()
@@ -13,8 +14,10 @@ Bullet::Bullet(double x, double y, double angle, int t)
 	this->x = x;
 	this->y = y;
 	direction_angle = angle;
-	isMoving = false;
+	isMoving = 0;
 	team = t;
+	hitX = -1;
+	hitY = -1;
 }
 
 void Bullet::show()
@@ -35,16 +38,19 @@ Bullet::~Bullet()
 void Bullet::Move(int maze[MSZ][MSZ])
 {
 	double dx, dy;
-	if (isMoving)
+	if (isMoving == 1)
 	{
 		dx = cos(direction_angle);
 		dy = sin(direction_angle);
 		x += dx * SPEED_BULLET;
 		y += dy * SPEED_BULLET;
 		if (maze[(int)y][(int)x] == WALL || maze[(int)y][(int)x] == PASS)
-			isMoving = false;
+			isMoving++;
+		if (maze[(int)y][(int)x] == ARMOURBEARER || maze[(int)y][(int)x] == SOLDIER) {
+			hitX = x;
+			hitY = y;
+		}
 	}
-
 }
 
 void Bullet::SimulateMotion(int maze[MSZ][MSZ], double security_map[MSZ][MSZ], double damage)

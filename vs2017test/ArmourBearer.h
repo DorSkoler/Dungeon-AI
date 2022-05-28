@@ -11,11 +11,12 @@ private:
     
 public:
     ArmourBearer();
-    ArmourBearer(double x, double y, int t);
+    ArmourBearer(double cx, double cy, int t);
     ~ArmourBearer();
 
     void init();
     void DrawMe();
+    void DrawMyHp();
 
     bool Move(int maze[MSZ][MSZ]);
     bool getSupplies(int g, int m);

@@ -1,5 +1,9 @@
 #include "GoToArsenal.h"
 
+GoToArsenal::GoToArsenal()
+{
+}
+
 void GoToArsenal::Transform(NPC* pn)
 {
 

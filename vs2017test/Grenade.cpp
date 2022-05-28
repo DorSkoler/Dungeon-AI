@@ -28,11 +28,17 @@ void Grenade::Explode()
 		bullets[i]->Fire();
 }
 
-void Grenade::Exploding(int maze[MSZ][MSZ])
+bool Grenade::Exploding(int maze[MSZ][MSZ])
 {
+	bool done = true;
 	if (isExploded)
-		for (int i = 0; i < NUM_BULLETS_PER_GRENADE; i++)
+		for (int i = 0; i < NUM_BULLETS_PER_GRENADE; i++) {
 			bullets[i]->Move(maze);
+			if (bullets[i]->getHitX() > -1)
+				hit = bullets[i];
+			done &= (bullets[i]->getIsMoving() == 2);
+		}
+	return done;
 }
 
 void Grenade::show()

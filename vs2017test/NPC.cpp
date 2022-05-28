@@ -3,6 +3,7 @@
 #include "Definitions.h"
 #include <math.h>
 #include <iostream>
+#include <string>
 
 void NPC::DrawMe()
 {
@@ -52,6 +53,68 @@ void NPC::DrawMe()
 	glVertex2d(x + 0.3, y + 1);
 	glVertex2d(x + 1, y);
 	glEnd();
+}
+
+NPC::NPC()
+{
+	direction_angle = (rand() % 360) * 3.14 / 180;
+	spaceOrPass = SPACE;
+}
+
+void NPC::setDestination(double destX, double destY)
+{
+	double distance;
+	targetX = destX;
+	targetY = destY;
+	distance = sqrt(pow(targetX - x, 2) + pow(targetY - y, 2));
+	// [dx,dy] must be vector of length 1 to the direction to target
+	dx = (targetX - x) / distance;
+	dy = (targetY - y) / distance;
+}
+
+void NPC::drawInfo()
+{
+	glColor3d(0, 0, 0);
+	unsigned char string[] = "| Grenades -";
+	int w = glutBitmapLength(GLUT_BITMAP_8_BY_13, string);
+	glRasterPos2f(xForInfo + 21, yForInfo - 1);
+	for (int i = 0; i < 13; i++) {
+		glutBitmapCharacter(GLUT_BITMAP_8_BY_13, string[i]);
+	}
+
+	unsigned char string1[] = "| Magazines -";
+	w = glutBitmapLength(GLUT_BITMAP_8_BY_13, string1);
+	glRasterPos2f(xForInfo + 21, yForInfo - 6);
+	for (int i = 0; i < 14; i++) {
+		glutBitmapCharacter(GLUT_BITMAP_8_BY_13, string1[i]);
+	}
+
+	std::string tmp = std::to_string(magazines.size());
+	char const* num_char = tmp.c_str();
+	w = glutBitmapLength(GLUT_BITMAP_8_BY_13, (unsigned char*)num_char);
+	glRasterPos2f(xForInfo + 48, yForInfo - 6);
+	glutBitmapCharacter(GLUT_BITMAP_8_BY_13, num_char[0]);
+
+
+	w = glutBitmapLength(GLUT_BITMAP_8_BY_13, (unsigned char*)"\\");
+	glRasterPos2f(xForInfo + 51, yForInfo - 6);
+	glutBitmapCharacter(GLUT_BITMAP_8_BY_13, '\\');
+	
+	glRasterPos2f(xForInfo + 51, yForInfo - 1);
+	glutBitmapCharacter(GLUT_BITMAP_8_BY_13, '\\');
+
+	std::string tmp1 = std::to_string(grenade_count);
+	char const* num_char1 = tmp1.c_str();
+	w = glutBitmapLength(GLUT_BITMAP_8_BY_13, (unsigned char*)num_char1);
+	glRasterPos2f(xForInfo + 48, yForInfo - 1);
+	glutBitmapCharacter(GLUT_BITMAP_8_BY_13, num_char1[0]);
+}
+
+NPC::NPC(double cx, double cy, int t)
+{
+	x = cx;
+	y = cy;
+	team = t;
 }
 
 

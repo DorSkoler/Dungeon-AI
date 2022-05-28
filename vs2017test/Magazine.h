@@ -1,16 +1,19 @@
 #pragma once
 #include "Bullet.h"
-#include "Definitions.h"
+#include <vector>
 
 class Magazine
 {
 private:
-	Bullet *bullets[NUM_BULLETS_PER_MAGAZINE];
-	int bullets_left = NUM_BULLETS_PER_MAGAZINE;
+	std::vector <Bullet*> bullets;
+	Bullet* hit = nullptr;
 public:
 	Magazine();
-	void fire();
-	int getBulletsLeft() { return bullets_left; };
-	bool isEmpty() { return bullets_left == 0; };
+	void fire(double x, double y, double angle, int t);
+	void show();
+	bool Move(int maze[MSZ][MSZ]);
+	Bullet* getHit() { return hit; };
+	int getBulletsLeft() { return bullets.size(); };
+	bool isEmpty() { return bullets.empty(); };
 };
 

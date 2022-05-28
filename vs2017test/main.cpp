@@ -30,18 +30,19 @@ Room rooms[NUM_ROOMS];
 bool underConstruction = false;
 int r1=0, r2=1; // rooms indices
 
-Bullet* pb = nullptr;
-Grenade* pg = nullptr;
-Team *teamA = nullptr;
+Team* teamA = nullptr;
 Team* teamB = nullptr;
-Pharmacy* pf = nullptr;
-Arsenal* pa = nullptr;
+vector <Arsenal*> arsenals;
+vector <Pharmacy*> pharmacies;
 
+vector<Bullet*> hittingBulletsTeamA;
+vector<Bullet*> hittingBulletsTeamB;
 
 void SetupRooms();
 void DigPassages();
 void AddObstacles();
 void SetUpTeams();
+void SetUpSupplies();
 
 void init()
 {	//          Red Green Blue 
@@ -56,19 +57,54 @@ void init()
 
 	AddObstacles();
 
+	SetUpSupplies();
+
 	SetUpTeams();
 }
 
+void findXandY(int* x, int* y, int r)
+{
+	int minX = rooms[r].getCenterX() - rooms[r].getWidth() / 2;
+	int maxX = rooms[r].getWidth() / 2 + rooms[r].getCenterX();
+	int minY = rooms[r].getCenterY() - rooms[r].getHeight() / 2;
+	int maxY = rooms[r].getHeight() / 2 + rooms[r].getCenterY();
+	do {
+		*x = rand() % (maxX - minX) + minX;
+		*y = rand() % (maxY - minY) + minY;
+	} while (maze[*y][*x] != SPACE);
+}
+
+void SetUpSupplies() {
+	for (int i = 0; i < 4; i++)
+	{
+		int r = rand() % NUM_ROOMS;
+		int x, y;
+		findXandY(&x, &y, r);
+		if (i < 2) {
+			maze[y][x] = ARSENAL;
+			arsenals.push_back(new Arsenal(x, y));
+		}
+		else {
+			maze[y][x] = PHARMACY;
+			pharmacies.push_back(new Pharmacy(x, y));
+		}
+	}
+
+}
+
 void SetUpTeams() {
-	int room_teamA = rand() % NUM_ROOMS;
+	int room_teamA = 1;//rand() % NUM_ROOMS;
 	cout << "room number " << room_teamA << " for team red\n"; 
 	teamA = new Team(TEAM_RED, &rooms[room_teamA], maze);
+	teamA->setTeamInfo(20, 90);
 	int room_teamB;
 	do {
 		room_teamB = rand() % NUM_ROOMS;
 	} while (room_teamA == room_teamB);
+	room_teamB = 1;
 	cout << "room number " << room_teamB << " for team blue\n";
 	teamB = new Team(TEAM_BLUE, &rooms[room_teamB], maze);
+	teamB->setTeamInfo(20, 40);
 }
 
 void AddObstacles()
@@ -261,7 +297,7 @@ void DigPassages()
 
 void CreateVisibilityMap()
 {
-	pg->SimulateVisibility(maze, visibility_map);
+	
 }
 
 void CreateSecurityMap()
@@ -299,10 +335,10 @@ void ShowMaze()
 			case WALL:
 				glColor3d(0.5, 0.55, 0.5); // grey
 				break;
-			case ARMOURBEARER:
+			/*case ARMOURBEARER:
 			case SOLDIER:
 				glColor3d(0, 0, 0);
-				break;
+				break;*/
 			case PASS:
 				glColor3d(0.5, 0.7, 0.5);
 				break;
@@ -352,25 +388,12 @@ void ShowStartAndTarget()
 
 void infoWindow()
 {
-	int i, j;
-
-	for (i = 0; i < MSZ; i++) {
-		for (j = 0; j < MSZ; j++)
-		{
-			glColor3d(0.5, 0.55, 0.5); // grey
-			glBegin(GL_POLYGON);
-			glVertex2d(j, i); // left-bottom corner
-			glVertex2d(j, i + 1); // left-top corner
-			glVertex2d(j + 1, i + 1); // right-top corner
-			glVertex2d(j + 1, i); // right-bottom corner
-			glEnd();
-		}// for
-	}
+	teamA->drawInfo();
+	teamB->drawInfo();
 }
 
 void displayInfo()
 {
-	glutSetWindow(windowInfo);
 	glClear(GL_COLOR_BUFFER_BIT);
 	infoWindow();
 	glutSwapBuffers();
@@ -378,31 +401,29 @@ void displayInfo()
 
 void idleInfo()
 {
-	glutSetWindow(windowInfo);
 	glutPostRedisplay();
 }
 
 void display()
 {
-	glutSetWindow(windowMain);
 	glClear(GL_COLOR_BUFFER_BIT); // clean frame buffer
 	
 	ShowMaze();
 	if (underConstruction)
 		ShowStartAndTarget();
 
-	if (pb != nullptr)
-		pb->show();
-	if (pg != nullptr)
-		pg->show();
+	for (int i = 0; i < arsenals.size(); i++)
+		arsenals.at(i)->DrawMe();
+	for (int i = 0; i < pharmacies.size(); i++)
+		pharmacies.at(i)->DrawMe();
+
+	teamA->checkShowBullets();
+	teamB->checkShowBullets();
+
 	if (teamA != nullptr)
 		teamA->drawTeam();
 	if (teamB != nullptr)
 		teamB->drawTeam();
-	if (pf != nullptr)
-		pf->DrawMe();
-	if (pa != nullptr)
-		pa->DrawMe();
 
 	for (int i = 0; i < NUM_ROOMS; i++)
 	{
@@ -415,7 +436,6 @@ void display()
 
 void idle()
 {
-	glutSetWindow(windowMain);
 	if (underConstruction)
 	{
 		DigPath(r1, r2);
@@ -431,10 +451,12 @@ void idle()
 	}
 	
 	// bullet
-	if (pb != nullptr && pb->getIsMoving())
-		pb->Move(maze);
-	if (pg != nullptr && pg->getIsExploded())
-		pg->Exploding(maze);
+	hittingBulletsTeamA = teamA->checkMoveBullets(maze);
+	for (int i = 0; i < hittingBulletsTeamA.size(); i++)
+		teamB->gotHit(hittingBulletsTeamA.at(i)->getHitX(), hittingBulletsTeamA.at(i)->getHitY());
+	hittingBulletsTeamB = teamB->checkMoveBullets(maze);
+	for (int i = 0; i < hittingBulletsTeamB.size(); i++)
+		teamA->gotHit(hittingBulletsTeamB.at(i)->getHitX(), hittingBulletsTeamB.at(i)->getHitY());
 		
 	glutPostRedisplay(); // indirect call to refresh function (display)
 }
@@ -443,17 +465,11 @@ void menu(int choice)
 {
 	if (choice == 1) // fire bullet
 	{
-		if (pb != nullptr)
-		{
-			pb->Fire();
-		}
+		
 	}
 	else if (choice == 2) // grenade
 	{
-		if (pg != nullptr)
-		{
-			pg->Explode();
-		}
+
 	}
 	else if (choice == 3) // create security map
 	{
@@ -474,36 +490,51 @@ void menu(int choice)
 // x and y are in pixels
 void mouse(int button, int state, int x, int y)
 {
-	if (pb == nullptr && button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
-		double cx, cy;
-
+		/*double cx, cy;
+		// get x and y from mouse click
 		cx = MSZ * x / (double)W;
 		cy = MSZ * (H-y) / (double)H;
-		pf = new Pharmacy(cx, cy);
-		pa = new Arsenal(cx, cy + 10);
+		cout << "x = " << cx << ", y = " << cy << "\n";
+		pf = new Pharmacy(cx, cy);*/
+		
+		teamA->getSoldier1()->shootBullet();
+		teamB->getSoldier1()->shootBullet();
+
+		teamB->getSoldier2()->shootBullet();
+		teamA->getSoldier2()->shootBullet();
+
+		glutSetWindow(windowInfo);
+		displayInfo();
+		glutSetWindow(windowMain);
 	}
 }
 
 void main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE); // double buffering for animation
+	//glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE); // double buffering for animation
 	glutInitWindowSize(400, 400);
 	glutInitWindowPosition(300, 900);
 	windowInfo = glutCreateWindow("Information");
-	glutDisplayFunc(displayInfo); // sets display function as window refresh function
-	glutIdleFunc(idleInfo);
 
 	glutInitWindowSize(W, H);
 	glutInitWindowPosition(700, 100);
 	windowMain = glutCreateWindow("Dungeons Example");
 
+	glutSetWindow(windowInfo);
+	// set the main axes
+	glOrtho(0, MSZ, 0, MSZ, -1, 1);
+	srand(time(0));
+	glClearColor(0.5, 0.55, 0.5, 0);
+	glutDisplayFunc(displayInfo); // sets display function as window refresh function
+	glutIdleFunc(idleInfo);
+
+	glutSetWindow(windowMain);
 	glutDisplayFunc(display); // sets display function as window refresh function
 	glutIdleFunc(idle); // runs all the time when nothing happens
 	glutMouseFunc(mouse);
-
-
 	// menu
 	glutCreateMenu(menu);
 	glutAddMenuEntry("Fire Bullet", 1);
@@ -511,7 +542,6 @@ void main(int argc, char* argv[])
 	glutAddMenuEntry("Create Security Map", 3);
 	glutAddMenuEntry("Create Visibility Map", 4);
 	glutAddMenuEntry("reset Security Map", 5);
-
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
 	init();

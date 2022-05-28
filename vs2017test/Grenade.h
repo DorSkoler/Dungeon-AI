@@ -10,6 +10,7 @@ private:
 	double x, y;
 	Bullet* bullets[NUM_BULLETS_PER_GRENADE];
 	bool isExploded;
+	Bullet* hit = nullptr;
 public:
 	Grenade();
 	Grenade(double x, double y, int t);
@@ -17,7 +18,8 @@ public:
 	void setXandY(int cx, int cy) {  }
 	bool getIsExploded() { return isExploded; }
 	void Explode();
-	void Exploding(int maze[MSZ][MSZ]);
+	Bullet* getHit() { return hit; };
+	bool Exploding(int maze[MSZ][MSZ]);
 	void show();
 	void SimulateExplosion(int maze[MSZ][MSZ], double security_map[MSZ][MSZ], double damage);
 	void SimulateVisibility(int maze[MSZ][MSZ], double visibility_map[MSZ][MSZ]);

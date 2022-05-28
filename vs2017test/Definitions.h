@@ -21,7 +21,7 @@ const double MAX_HP_SOLDIER = 500;
 const int MAX_MAGAZINE_SOLDIER = 3;
 const int MAX_GRENADES_SOLDIER = 2;
 const int HP_UP_SOLDIER = 200;
-const int GRENADE_THROW_RANGE = 7;
+const int GRENADE_THROW_RANGE = 5;
 
 // for armour bearer
 const double SPEED_AB = 0.1;
