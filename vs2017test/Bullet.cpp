@@ -35,6 +35,16 @@ Bullet::~Bullet()
 {
 }
 
+bool checkHit(int maze[MSZ][MSZ], int cx, int cy)
+{
+	for (int i = BEGIN_COUNT_TEAM_A; i < BEGIN_COUNT_TEAM_A + 6; i++)
+	{
+		if (maze[(int)cy][(int)cx] == i)
+			return true;
+	}
+	return false;
+}
+
 void Bullet::Move(int maze[MSZ][MSZ])
 {
 	double dx, dy;
@@ -46,7 +56,7 @@ void Bullet::Move(int maze[MSZ][MSZ])
 		y += dy * SPEED_BULLET;
 		if (maze[(int)y][(int)x] == WALL || maze[(int)y][(int)x] == PASS)
 			isMoving++;
-		if (maze[(int)y][(int)x] == ARMOURBEARER || maze[(int)y][(int)x] == SOLDIER) {
+		if (checkHit(maze, x, y)) {
 			hitX = x;
 			hitY = y;
 		}

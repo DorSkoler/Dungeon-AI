@@ -11,6 +11,7 @@ class State;
 class NPC
 {
 protected:
+	int myMazeNum;
 	double x, y;
 	double xForInfo, yForInfo;
 	double targetX, targetY;
@@ -20,6 +21,7 @@ protected:
 	double direction_angle;
 	int spaceOrPass;
 	int grenade_count;
+	bool isMoving = false;
 	std::vector<Magazine*> magazines;
 	State* pCurrentState;
 	State* pInterruptedState;
@@ -39,10 +41,13 @@ public:
 	int getTeam() { return team; };
 	int getMagazinesLeft() { return magazines.size(); };
 	int getGrenadeCount() { return grenade_count; };
+	bool Move(int maze[MSZ][MSZ]);
 
+	void setMazeNum(int num) { myMazeNum = num; };
+	void setIsMoving(bool value) { isMoving = value; };
 	void setDestination(double destX, double destY);
 	bool isThisXandYisNPC(int cx, int cy) { return y == cy && x == cx; };
-	void setHp(int _hp) { hp = _hp; };
+	void setHp(int _hp);
 	void setInfoXandY(int cx, int cy) { xForInfo = cx; yForInfo = cy; };
 };
 

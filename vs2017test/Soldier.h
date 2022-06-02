@@ -20,7 +20,6 @@ public:
     bool getIsShooting() { return isShooting; };
     void DrawMyHp();
 
-    bool Move(int maze[MSZ][MSZ]);
     Bullet* MoveBullets(int maze[MSZ][MSZ]);
     void showBullets();
     void shootBullet();

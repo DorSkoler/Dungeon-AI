@@ -69,25 +69,6 @@ void ArmourBearer::DrawMyHp()
 	glutBitmapCharacter(GLUT_BITMAP_8_BY_13, num_char1[0]);
 }
 
-bool ArmourBearer::Move(int maze[MSZ][MSZ])
-{
-	double dx, dy, nextX = x, nextY = y;
-	dx = cos(direction_angle);
-	dy = sin(direction_angle);
-	nextX = x + dx * SPEED_AB;
-	nextY = y + dy * SPEED_AB;
-	if (maze[(int)y][(int)x] != WALL)
-	{
-		maze[(int)y][(int)x] = spaceOrPass;
-		spaceOrPass = maze[(int)nextY][(int)nextX];
-		maze[(int)nextY][(int)nextX] = ARMOURBEARER;
-		x = nextX;
-		y = nextY;
-		return true;
-	}
-	return false;
-}
-
 bool ArmourBearer::getSupplies(int g, int m)
 {
 	if (magazines.size() + m > MAX_MAGAZINE_AB || g + grenade_count > MAX_GRENADES_AB)

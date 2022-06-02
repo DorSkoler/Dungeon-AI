@@ -58,25 +58,6 @@ void Soldier::DrawMyHp()
 	glutBitmapCharacter(GLUT_BITMAP_8_BY_13, num_char1[0]);
 }
 
-bool Soldier::Move(int maze[MSZ][MSZ])
-{
-	double dx, dy, nextX = x, nextY = y;
-	dx = cos(direction_angle);
-	dy = sin(direction_angle);
-	nextX = x + dx * SPEED_SOLDIER;
-	nextY = y + dy * SPEED_SOLDIER;
-	if (maze[(int)y][(int)x] != WALL)
-	{
-		maze[(int)y][(int)x] = spaceOrPass;
-		spaceOrPass = maze[(int)nextY][(int)nextX];
-		maze[(int)nextY][(int)nextX] = SOLDIER;
-		x = nextX;
-		y = nextY;
-		return true;
-	}
-	return false;
-}
-
 Bullet* Soldier::MoveBullets(int maze[MSZ][MSZ])
 {
 	if (isShooting && !currentGrenade) {

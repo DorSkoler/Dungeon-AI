@@ -70,6 +70,39 @@ void NPC::setDestination(double destX, double destY)
 	// [dx,dy] must be vector of length 1 to the direction to target
 	dx = (targetX - x) / distance;
 	dy = (targetY - y) / distance;
+	direction_angle = acos(dx);
+}
+
+bool canNPCmove(int cx, int cy, int maze[MSZ][MSZ], int mazeNum)
+{
+	if (maze[(int)cy][(int)cx] == PASS)
+		return true;
+	if (maze[(int)cy][(int)cx] == SPACE)
+		return true;
+	if (maze[(int)cy][(int)cx] == mazeNum)
+		return true;
+	return false;
+}
+
+bool NPC::Move(int maze[MSZ][MSZ])
+{
+	if (isMoving) {
+		double nextX = x, nextY = y;
+		nextX = x + dx * SPEED_SOLDIER;
+		nextY = y + dy * SPEED_SOLDIER;
+		if (canNPCmove(nextX, nextY, maze, myMazeNum))
+		{
+			maze[(int)y][(int)x] = spaceOrPass;
+			spaceOrPass = maze[(int)nextY][(int)nextX];
+			maze[(int)nextY][(int)nextX] = myMazeNum;
+			x = nextX;
+			y = nextY;
+			return true;
+		}
+		else
+			isMoving = false;
+		return false;
+	}
 }
 
 void NPC::drawInfo()
@@ -115,6 +148,14 @@ NPC::NPC(double cx, double cy, int t)
 	x = cx;
 	y = cy;
 	team = t;
+}
+
+void NPC::setHp(int _hp) 
+{
+	if (_hp > hp)
+		hp = 0;
+	else
+		hp -= _hp;
 }
 
 

@@ -28,6 +28,7 @@ double visibility_map[MSZ][MSZ] = { 0 };
 
 Room rooms[NUM_ROOMS];
 bool underConstruction = false;
+bool gameOver = false;
 int r1=0, r2=1; // rooms indices
 
 Team* teamA = nullptr;
@@ -95,7 +96,7 @@ void SetUpSupplies() {
 void SetUpTeams() {
 	int room_teamA = 1;//rand() % NUM_ROOMS;
 	cout << "room number " << room_teamA << " for team red\n"; 
-	teamA = new Team(TEAM_RED, &rooms[room_teamA], maze);
+	teamA = new Team(TEAM_RED, &rooms[room_teamA], maze, BEGIN_COUNT_TEAM_A);
 	teamA->setTeamInfo(20, 90);
 	int room_teamB;
 	do {
@@ -103,7 +104,7 @@ void SetUpTeams() {
 	} while (room_teamA == room_teamB);
 	room_teamB = 1;
 	cout << "room number " << room_teamB << " for team blue\n";
-	teamB = new Team(TEAM_BLUE, &rooms[room_teamB], maze);
+	teamB = new Team(TEAM_BLUE, &rooms[room_teamB], maze, BEGIN_COUNT_TEAM_B);
 	teamB->setTeamInfo(20, 40);
 }
 
@@ -335,10 +336,16 @@ void ShowMaze()
 			case WALL:
 				glColor3d(0.5, 0.55, 0.5); // grey
 				break;
-			/*case ARMOURBEARER:
-			case SOLDIER:
-				glColor3d(0, 0, 0);
-				break;*/
+			case BEGIN_COUNT_TEAM_A:
+			case BEGIN_COUNT_TEAM_A+1:
+			case BEGIN_COUNT_TEAM_A+2:
+				glColor3d(1, 0, 0);
+				break;
+			case BEGIN_COUNT_TEAM_B:
+			case BEGIN_COUNT_TEAM_B+1:
+			case BEGIN_COUNT_TEAM_B+2:
+				glColor3d(0, 0, 1);
+				break;
 			case PASS:
 				glColor3d(0.5, 0.7, 0.5);
 				break;
@@ -356,6 +363,11 @@ void ShowMaze()
 			glVertex2d(j+1, i); // right-bottom corner
 			glEnd();
 		}// for
+}
+
+void getMyTarget(NPC* pn, NPC* pTarget) 
+{
+	pn->setDestination(pTarget->getX(), pTarget->getY());
 }
 
 
@@ -436,29 +448,40 @@ void display()
 
 void idle()
 {
-	if (underConstruction)
-	{
-		DigPath(r1, r2);
-		// prepare for the next A*
-		r2++;
-		if (r2 >= NUM_ROOMS)
+	if (!gameOver) {
+
+		if (underConstruction)
 		{
-			r1++;
-			r2 = r1 + 1;
-			if (r1 + 1 >= NUM_ROOMS)
-				underConstruction=false;
+			DigPath(r1, r2);
+			// prepare for the next A*
+			r2++;
+			if (r2 >= NUM_ROOMS)
+			{
+				r1++;
+				r2 = r1 + 1;
+				if (r1 + 1 >= NUM_ROOMS)
+					underConstruction=false;
+			}
 		}
-	}
+
+		gameOver = teamA->checkAlive() || teamB->checkAlive();
+		if (gameOver) {
+			if (teamA->checkAlive())
+				cout << "Team B Won The Game!\n";
+			else
+				cout << "Team A Won The Game!\n";
+		}
 	
-	// bullet
-	hittingBulletsTeamA = teamA->checkMoveBullets(maze);
-	for (int i = 0; i < hittingBulletsTeamA.size(); i++)
-		teamB->gotHit(hittingBulletsTeamA.at(i)->getHitX(), hittingBulletsTeamA.at(i)->getHitY());
-	hittingBulletsTeamB = teamB->checkMoveBullets(maze);
-	for (int i = 0; i < hittingBulletsTeamB.size(); i++)
-		teamA->gotHit(hittingBulletsTeamB.at(i)->getHitX(), hittingBulletsTeamB.at(i)->getHitY());
-		
-	glutPostRedisplay(); // indirect call to refresh function (display)
+		// bullet
+		hittingBulletsTeamA = teamA->checkMoveBullets(maze);
+		for (int i = 0; i < hittingBulletsTeamA.size(); i++)
+			teamB->gotHit(hittingBulletsTeamA.at(i)->getHitX(), hittingBulletsTeamA.at(i)->getHitY());
+		hittingBulletsTeamB = teamB->checkMoveBullets(maze);
+		for (int i = 0; i < hittingBulletsTeamB.size(); i++)
+			teamA->gotHit(hittingBulletsTeamB.at(i)->getHitX(), hittingBulletsTeamB.at(i)->getHitY());
+
+		glutPostRedisplay(); // indirect call to refresh function (display)
+	}	
 }
 
 void menu(int choice)
@@ -499,12 +522,16 @@ void mouse(int button, int state, int x, int y)
 		cout << "x = " << cx << ", y = " << cy << "\n";
 		pf = new Pharmacy(cx, cy);*/
 		
-		teamA->getSoldier1()->shootBullet();
-		teamB->getSoldier1()->shootBullet();
+		if (teamA->getSoldier1())
+			teamA->getSoldier1()->shootBullet();
+		if (teamA->getSoldier2())
+			teamA->getSoldier2()->shootBullet();
+		
+		getMyTarget(teamB->getSoldier1(), teamA->getSoldier1());
+		teamB->getSoldier1()->setIsMoving(true);
 
 		teamB->getSoldier2()->shootBullet();
-		teamA->getSoldier2()->shootBullet();
-
+		
 		glutSetWindow(windowInfo);
 		displayInfo();
 		glutSetWindow(windowMain);
