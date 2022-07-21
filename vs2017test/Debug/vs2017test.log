@@ -1,94 +1,237 @@
-﻿  ArmourBearer.cpp
-C:\Users\User\Desktop\Final_Project\vs2017test\Definitions.h(28,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\ArmourBearer.cpp(62,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\ArmourBearer.cpp(62,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\ArmourBearer.cpp(68,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\ArmourBearer.cpp(68,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-  Arsenal.cpp
-C:\Users\User\Desktop\Final_Project\vs2017test\Arsenal.cpp(41,27): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Arsenal.cpp(41,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-  Bullet.cpp
-C:\Users\User\Desktop\Final_Project\vs2017test\Bullet.cpp(59,25): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Bullet.cpp(59,22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Bullet.cpp(60,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Bullet.cpp(61,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  FightMode.cpp
-  FillAmmoSoldier.cpp
-  FillMyHpBar.cpp
-  GoToArsenal.cpp
-  GoToPharmacy.cpp
-  GoToSoldier.cpp
-  Grenade.cpp
-C:\Users\User\Desktop\Final_Project\vs2017test\Grenade.cpp(37,27): warning C4804: '>': unsafe use of type 'bool' in operation
-  HelpTeamSoldier.cpp
-  IdleAB.cpp
-  IdleSoldier.cpp
-  Magazine.cpp
-C:\Users\User\Desktop\Final_Project\vs2017test\Magazine.cpp(29,30): warning C4804: '>': unsafe use of type 'bool' in operation
+﻿  main.cpp
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(10,10): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(10,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(10,14): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(11,10): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(11,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(11,14): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(21,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(21,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(21,25): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(22,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(22,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(22,25): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(52,27): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(57,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(423,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(425,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(516,14): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(516,38): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(517,23): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(517,45): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(517,58): error C2660: 'getMyTarget': function does not take 1 arguments
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Functions.h(7,6): message : see declaration of 'getMyTarget'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(519,14): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(520,11): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(522,14): error C2039: 'getSoldier1': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(522,38): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(523,23): error C2039: 'getSoldier1': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(523,45): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(523,58): error C2660: 'getMyTarget': function does not take 1 arguments
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Functions.h(7,6): message : see declaration of 'getMyTarget'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(524,11): error C2039: 'getSoldier1': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(526,14): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(526,38): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(527,23): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(527,45): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(527,58): error C2660: 'getMyTarget': function does not take 1 arguments
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Functions.h(7,6): message : see declaration of 'getMyTarget'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(528,11): error C2039: 'getSoldier2': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(534,14): error C2039: 'getSoldier1': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(535,11): error C2039: 'getSoldier1': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(544,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(558,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\main.cpp(559,32): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
   NPC.cpp
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(21,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(22,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(23,35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(23,21): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(93,25): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(93,18): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(113,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(113,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(120,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(120,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(128,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(128,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(133,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(133,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(136,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(136,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(142,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(142,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-  Pharmacy.cpp
-C:\Users\User\Desktop\Final_Project\vs2017test\Pharmacy.cpp(54,27): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Pharmacy.cpp(54,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-  Room.cpp
-C:\Users\User\Desktop\Final_Project\vs2017test\Room.cpp(38,50): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Room.cpp(38,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Room.cpp(44,50): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Room.cpp(44,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Room.cpp(31,7): warning C4101: 'c': unreferenced local variable
-  Run.cpp
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(21,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(22,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(23,35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(23,21): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(98,25): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(98,18): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(118,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(118,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(125,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(125,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(131,35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(131,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(137,39): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(137,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(145,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(145,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(150,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(150,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(153,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(153,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(159,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(159,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
   Soldier.cpp
-C:\Users\User\Desktop\Final_Project\vs2017test\Definitions.h(20,31): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Soldier.cpp(29,27): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Soldier.cpp(29,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Soldier.cpp(51,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Soldier.cpp(51,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Soldier.cpp(57,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Soldier.cpp(57,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(10,10): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(10,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(10,14): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(11,10): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(11,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(11,14): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(12,15): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(12,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(12,19): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(17,14): error C2061: syntax error: identifier 'Room'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(21,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(21,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(21,25): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(22,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(22,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(22,25): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(23,14): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(23,14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(23,24): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(28,52): error C2061: syntax error: identifier 'Room'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(29,21): error C2061: syntax error: identifier 'Room'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(30,5): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(30,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(30,31): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Definitions.h(20,31): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Soldier.cpp(34,27): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Soldier.cpp(34,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Soldier.cpp(56,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Soldier.cpp(56,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Soldier.cpp(62,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Soldier.cpp(62,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Soldier.cpp(135,40): error C2660: 'Team::getRoomsOfNpc': function does not take 1 arguments
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(29,7): message : see declaration of 'Team::getRoomsOfNpc'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Soldier.cpp(142,47): error C2039: 'getNpcByIndex': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Soldier.cpp(142,63): error C2660: 'getDistance': function does not take 1 arguments
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Functions.h(9,8): message : see declaration of 'getDistance'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Soldier.cpp(145,22): error C2039: 'getNpcByIndex': is not a member of 'Team'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(7): message : see declaration of 'Team'
   Team.cpp
-C:\Users\User\Desktop\Final_Project\vs2017test\Team.cpp(64,21): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Team.cpp(64,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Team.cpp(73,27): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Team.cpp(73,19): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Team.cpp(82,27): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Team.cpp(82,19): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Team.cpp(91,53): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Team.cpp(91,32): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Team.cpp(100,53): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Team.cpp(100,32): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Team.cpp(109,53): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\Team.cpp(109,32): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(10,10): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(10,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(10,14): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(11,10): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(11,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(11,14): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(12,15): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(12,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(12,19): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(17,14): error C2061: syntax error: identifier 'Room'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(21,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(21,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(21,25): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(22,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(22,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(22,25): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(23,14): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(23,14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(23,24): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(28,52): error C2061: syntax error: identifier 'Room'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(29,21): error C2061: syntax error: identifier 'Room'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(30,5): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(30,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.h(30,31): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(12,19): error C2061: syntax error: identifier 'Room'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(16,13): error C2065: 'r': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(16,31): error C2065: 'r': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(17,13): error C2065: 'r': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(17,33): error C2065: 'r': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(18,13): error C2065: 'r': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(18,31): error C2065: 'r': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(19,13): error C2065: 'r': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(19,34): error C2065: 'r': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(21,12): error C2065: 'maze': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(22,2): error C2065: 'maze': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(22,17): error C2065: 'begin': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(23,2): error C2065: 'ab': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(23,11): error C2061: syntax error: identifier 'ArmourBearer'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(24,2): error C2065: 'ab': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(24,17): error C2065: 'begin': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(25,12): error C2065: 'maze': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(26,2): error C2065: 'maze': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(26,17): error C2065: 'begin': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(27,2): error C2065: 's1': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(27,11): error C2061: syntax error: identifier 'Soldier'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(28,2): error C2065: 's1': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(28,17): error C2065: 'begin': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(29,12): error C2065: 'maze': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(30,2): error C2065: 'maze': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(30,17): error C2065: 'begin': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(31,2): error C2065: 's2': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(31,11): error C2061: syntax error: identifier 'Soldier'
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(32,2): error C2065: 's2': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(32,17): error C2065: 'begin': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(37,6): error C2065: 's1': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(38,3): error C2065: 's1': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(39,6): error C2065: 's2': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(40,3): error C2065: 's2': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(41,6): error C2065: 'ab': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(42,3): error C2065: 'ab': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(49,6): error C2065: 's1': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(50,3): error C2065: 's1': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(51,6): error C2065: 's2': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(52,3): error C2065: 's2': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(53,6): error C2065: 'ab': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(54,3): error C2065: 'ab': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(60,2): error C3861: 'glColor3d': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(63,23): error C2065: 'GLUT_BITMAP_8_BY_13': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(63,6): error C3861: 'glutBitmapLength': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(64,2): error C3861: 'glRasterPos2f': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(66,23): error C2065: 'GLUT_BITMAP_8_BY_13': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(66,3): error C3861: 'glutBitmapCharacter': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(70,3): error C3861: 'glColor3d': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(72,24): error C2065: 'GLUT_BITMAP_8_BY_13': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(72,7): error C3861: 'glutBitmapLength': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(73,3): error C3861: 'glRasterPos2f': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(75,24): error C2065: 'GLUT_BITMAP_8_BY_13': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(75,4): error C3861: 'glutBitmapCharacter': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(79,3): error C3861: 'glColor3d': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(81,24): error C2065: 'GLUT_BITMAP_8_BY_13': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(81,7): error C3861: 'glutBitmapLength': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(82,3): error C3861: 'glRasterPos2f': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(84,24): error C2065: 'GLUT_BITMAP_8_BY_13': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(84,4): error C3861: 'glutBitmapCharacter': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(87,2): error C3861: 'glColor3d': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(88,6): error C2065: 's1': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(90,24): error C2065: 'GLUT_BITMAP_8_BY_13': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(90,7): error C3861: 'glutBitmapLength': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(91,17): error C2065: 's1': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(91,38): error C2065: 's1': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(91,3): error C3861: 'glRasterPos2f': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(93,24): error C2065: 'GLUT_BITMAP_8_BY_13': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(93,4): error C3861: 'glutBitmapCharacter': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(95,3): error C2065: 's1': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(97,6): error C2065: 's2': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(99,24): error C2065: 'GLUT_BITMAP_8_BY_13': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(99,7): error C3861: 'glutBitmapLength': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(100,17): error C2065: 's2': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(100,38): error C2065: 's2': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(100,3): error C3861: 'glRasterPos2f': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(102,24): error C2065: 'GLUT_BITMAP_8_BY_13': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(102,4): error C3861: 'glutBitmapCharacter': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(104,3): error C2065: 's2': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(106,6): error C2065: 'ab': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(108,24): error C2065: 'GLUT_BITMAP_8_BY_13': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(108,7): error C3861: 'glutBitmapLength': identifier not found
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(109,17): error C2065: 'ab': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(109,38): error C2065: 'ab': undeclared identifier
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\Team.cpp(109,40): fatal error C1003: error count exceeds 100; stopping compilation
   Generating Code...
-C:\Users\User\Desktop\Final_Project\vs2017test\Soldier.cpp(75): warning C4715: 'Soldier::MoveBullets': not all control paths return a value
-C:\Users\User\Desktop\Final_Project\vs2017test\NPC.cpp(106): warning C4715: 'NPC::Move': not all control paths return a value
-C:\Users\User\Desktop\Final_Project\vs2017test\ArmourBearer.cpp(79): warning C4715: 'ArmourBearer::getSupplies': not all control paths return a value
-  Compiling...
-  main.cpp
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(50,27): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(55,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(427,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(429,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(477,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(480,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(542,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(556,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\User\Desktop\Final_Project\vs2017test\main.cpp(557,32): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-  Generating Code...
-  vs2017test.vcxproj -> C:\Users\User\Desktop\Final_Project\Debug\vs2017test.exe
+C:\Users\User\OneDrive - Afeka College Of Engineering\דור\אפקה\שנה ג\semester B\בינה מלאכותית\פרויקט\Final_Project\vs2017test\NPC.cpp(111): warning C4715: 'NPC::Move': not all control paths return a value

@@ -19,9 +19,11 @@ const int NUM_BULLETS_PER_GRENADE = 32;
 const double SPEED_SOLDIER = 0.01;
 const double MAX_HP_SOLDIER = 500;
 const int MAX_MAGAZINE_SOLDIER = 3;
-const int MAX_GRENADES_SOLDIER = 2;
+const int MAX_GRENADES_SOLDIER = 9;
 const int HP_UP_SOLDIER = 200;
 const int GRENADE_THROW_RANGE = 5;
+const int FIRE_RANGE = 10;
+const int STOP_NEAR_ENEMY_RANGE = 1;
 
 // for armour bearer
 const double SPEED_AB = 0.02;
@@ -33,6 +35,7 @@ const int HP_POTIONS_AB = 3;
 // teams
 const int TEAM_RED = 1;
 const int TEAM_BLUE = 2;
+const int NUM_PLAYERS = 6;
 
 // Pharmacy
 const int MAX_STOCK_PHARMACY = 10;
@@ -40,3 +43,7 @@ const int MAX_STOCK_PHARMACY = 10;
 // Arsenal
 const int MAX_STOCK_MAGAZINES = 15;
 const int MAX_STOCK_GRENADES = 15;
+
+// Bullet
+const double HIT_RATE = 100;
+const double SPEED_BULLET = 0.1;

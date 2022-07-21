@@ -73,6 +73,11 @@ void NPC::setDestination(double destX, double destY)
 	direction_angle = acos(dx);
 }
 
+bool NPC::isThisXandYisNPC(int cx, int cy)
+{
+	return (int)(y) == cy && (int)(x) == cx;
+}
+
 bool canNPCmove(int cx, int cy, int maze[MSZ][MSZ], int mazeNum)
 {
 	if (maze[(int)cy][(int)cx] == PASS)
@@ -120,6 +125,18 @@ void NPC::drawInfo()
 	glRasterPos2f(xForInfo + 21, yForInfo - 6);
 	for (int i = 0; i < 14; i++) {
 		glutBitmapCharacter(GLUT_BITMAP_8_BY_13, string1[i]);
+	}
+
+	std::string string2 = std::to_string((int)(x));
+	glRasterPos2f(xForInfo, yForInfo - 6);
+	for (int i = 0; i < 2; i++) {
+		glutBitmapCharacter(GLUT_BITMAP_8_BY_13, string2[i]);
+	}
+
+	std::string string3 = std::to_string((int)(y));
+	glRasterPos2f(xForInfo + 8, yForInfo - 6);
+	for (int i = 0; i < 2; i++) {
+		glutBitmapCharacter(GLUT_BITMAP_8_BY_13, string3[i]);
 	}
 
 	std::string tmp = std::to_string(magazines.size());

@@ -16,6 +16,7 @@
 #include "Pharmacy.h"
 #include "Arsenal.h"
 #include "Team.h"
+#include "Functions.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ int windowInfo;
 int windowMain;
 
 int maze[MSZ][MSZ] = { 0 };
+int hits[NUM_PLAYERS] = { 0 };
 double security_map[MSZ][MSZ] = { 0 };
 double visibility_map[MSZ][MSZ] = { 0 };
 
@@ -94,7 +96,7 @@ void SetUpSupplies() {
 }
 
 void SetUpTeams() {
-	int room_teamA = 1;//rand() % NUM_ROOMS;
+	int room_teamA = rand() % NUM_ROOMS;
 	cout << "room number " << room_teamA << " for team red\n"; 
 	teamA = new Team(TEAM_RED, &rooms[room_teamA], maze, BEGIN_COUNT_TEAM_A);
 	teamA->setTeamInfo(20, 90);
@@ -102,7 +104,6 @@ void SetUpTeams() {
 	do {
 		room_teamB = rand() % NUM_ROOMS;
 	} while (room_teamA == room_teamB);
-	room_teamB = 1;
 	cout << "room number " << room_teamB << " for team blue\n";
 	teamB = new Team(TEAM_BLUE, &rooms[room_teamB], maze, BEGIN_COUNT_TEAM_B);
 	teamB->setTeamInfo(20, 40);
@@ -310,7 +311,7 @@ void CreateSecurityMap()
 
 	for (i = 0; i < num_simulations; i++)
 	{
-		g = new Grenade(rand() % MSZ, rand() % MSZ, 0);
+		g = new Grenade(rand() % MSZ, rand() % MSZ, 0, 0, 0);
 		g->SimulateExplosion(maze, security_map, damage);
 	}
 
@@ -363,11 +364,6 @@ void ShowMaze()
 			glVertex2d(j+1, i); // right-bottom corner
 			glEnd();
 		}// for
-}
-
-void getMyTarget(NPC* pn, NPC* pTarget) 
-{
-	pn->setDestination(pTarget->getX(), pTarget->getY());
 }
 
 
@@ -464,21 +460,22 @@ void idle()
 			}
 		}
 
-		gameOver = teamA->checkAlive() || teamB->checkAlive();
+		gameOver = teamA->checkAlive(maze) || teamB->checkAlive(maze);
 		if (gameOver) {
-			if (teamA->checkAlive())
+			if (teamA->checkAlive(maze))
 				cout << "Team B Won The Game!\n";
 			else
 				cout << "Team A Won The Game!\n";
 		}
+
+		teamA->doSomething(teamB, maze, rooms);
+		teamB->doSomething(teamA, maze, rooms);
 	
 		// bullet
-		hittingBulletsTeamA = teamA->checkMoveBullets(maze);
-		for (int i = 0; i < hittingBulletsTeamA.size(); i++)
-			teamB->gotHit(hittingBulletsTeamA.at(i)->getHitX(), hittingBulletsTeamA.at(i)->getHitY());
-		hittingBulletsTeamB = teamB->checkMoveBullets(maze);
-		for (int i = 0; i < hittingBulletsTeamB.size(); i++)
-			teamA->gotHit(hittingBulletsTeamB.at(i)->getHitX(), hittingBulletsTeamB.at(i)->getHitY());
+		teamA->checkMoveBullets(maze, hits);
+		teamA->gotHit(hits);
+		teamB->checkMoveBullets(maze, hits);
+		teamB->gotHit(hits);
 
 		glutPostRedisplay(); // indirect call to refresh function (display)
 	}	
@@ -515,22 +512,27 @@ void mouse(int button, int state, int x, int y)
 {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
-		/*double cx, cy;
-		// get x and y from mouse click
-		cx = MSZ * x / (double)W;
-		cy = MSZ * (H-y) / (double)H;
-		cout << "x = " << cx << ", y = " << cy << "\n";
-		pf = new Pharmacy(cx, cy);*/
-		
-		if (teamA->getSoldier1())
-			teamA->getSoldier1()->shootBullet();
-		if (teamA->getSoldier2())
-			teamA->getSoldier2()->shootBullet();
-		
-		getMyTarget(teamB->getSoldier1(), teamA->getSoldier1());
-		teamB->getSoldier1()->setIsMoving(true);
+	
+		if (teamB->getSoldier2() && teamA->getSoldier2())
+			getMyTarget(teamB->getSoldier2(), teamA->getSoldier2());
 
-		teamB->getSoldier2()->shootBullet();
+		if (teamB->getSoldier2())
+			teamB->getSoldier2()->shootBullet();
+
+		if (teamA->getSoldier1() && teamB->getSoldier2()) {
+			getMyTarget(teamA->getSoldier1(), teamB->getSoldier2());
+			teamA->getSoldier1()->shootBullet();
+		}
+		if (teamA->getSoldier2() && teamB->getSoldier2()) {
+			getMyTarget(teamA->getSoldier2(), teamB->getSoldier2());
+			teamA->getSoldier2()->shootBullet();
+		}
+		
+		/*if (teamB->getSoldier1() && teamA->getSoldier1())
+			getMyTarget(teamB->getSoldier1(), teamA->getSoldier1());*/
+
+		if (teamB->getSoldier1())
+			teamB->getSoldier1()->setIsMoving(true);
 		
 		glutSetWindow(windowInfo);
 		displayInfo();

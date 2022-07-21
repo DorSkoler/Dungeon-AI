@@ -5,13 +5,13 @@ Grenade::Grenade()
 {
 }
 
-Grenade::Grenade(double x, double y, int t)
+Grenade::Grenade(double x, double y, int t, int sX, int sY)
 {
 	double teta = 2 * 3.14 / NUM_BULLETS_PER_GRENADE;
 	this->x = x;
 	this->y = y;
 	for (int i = 0; i < NUM_BULLETS_PER_GRENADE; i++)
-		bullets[i] = new Bullet(x, y, i*teta, t);
+		bullets[i] = new Bullet(x, y, i*teta, t, sX, sY);
 
 	isExploded = false;
 }
@@ -28,14 +28,12 @@ void Grenade::Explode()
 		bullets[i]->Fire();
 }
 
-bool Grenade::Exploding(int maze[MSZ][MSZ])
+bool Grenade::Exploding(int maze[MSZ][MSZ], int hits[NUM_PLAYERS])
 {
 	bool done = true;
 	if (isExploded)
 		for (int i = 0; i < NUM_BULLETS_PER_GRENADE; i++) {
-			bullets[i]->Move(maze);
-			if (bullets[i]->getHitX() > -1)
-				hit = bullets[i];
+			bullets[i]->Move(maze, hits);
 			done &= (bullets[i]->getIsMoving() == 2);
 		}
 	return done;

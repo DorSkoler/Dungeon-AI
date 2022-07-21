@@ -1,4 +1,6 @@
 #include "Soldier.h"
+#include "IdleSoldier.h"
+#include <iostream>
 
 Soldier::Soldier()
 {
@@ -18,6 +20,9 @@ void Soldier::init()
 	grenade_count = MAX_GRENADES_SOLDIER;
 	for (int i = 0; i < MAX_MAGAZINE_SOLDIER; i++)
 		magazines.push_back(new Magazine());
+	pCurrentState = new IdleSoldier();
+	pCurrentState->OnEnter(this);
+	idle = true;
 }
 
 void Soldier::DrawMe(const char* string)
@@ -56,22 +61,20 @@ void Soldier::DrawMyHp()
 	w = glutBitmapLength(GLUT_BITMAP_8_BY_13, (unsigned char*)num_char1);
 	glRasterPos2f(xForInfo + 54, yForInfo - 1);
 	glutBitmapCharacter(GLUT_BITMAP_8_BY_13, num_char1[0]);
+
 }
 
-Bullet* Soldier::MoveBullets(int maze[MSZ][MSZ])
+Bullet* Soldier::MoveBullets(int maze[MSZ][MSZ], int hits[NUM_PLAYERS])
 {
 	if (isShooting && !currentGrenade) {
 		Magazine* pm = *(magazines.begin());
-		isShooting = pm->Move(maze);
-		if (pm->getHit() != nullptr)
-			return pm->getHit();
+		isShooting = pm->Move(maze, hits);
 	}
 	else if (currentGrenade) {
-		if (currentGrenade->getHit() != nullptr)
-			return currentGrenade->getHit();
-		if (currentGrenade->Exploding(maze))
+		if (currentGrenade->Exploding(maze, hits))
 			currentGrenade = nullptr;
 	}
+	return nullptr;
 }
 
 void Soldier::showBullets()
@@ -98,7 +101,7 @@ void Soldier::shootBullet()
 			pm = *(magazines.begin());
 		}
 		isShooting = true;
-		pm->fire(x, y, direction_angle, team);
+		pm->fire(x, y, dx, dy, team);
 	}
 }
 
@@ -113,8 +116,45 @@ void Soldier::throwGrenade(int maze[MSZ][MSZ])
 			rangeX = rand() % (GRENADE_THROW_RANGE - min) + min;
 			rangeY = rand() % (GRENADE_THROW_RANGE - min) + min;
 		} while (maze[(int)y + rangeY][(int)x + rangeX] == WALL);
-		currentGrenade = new Grenade(x + rangeX, y + rangeY, team);
+		currentGrenade = new Grenade(x + rangeX, y + rangeY, team, (int)x, (int)y);
 		currentGrenade->Explode();
 		grenade_count--;
+	}
+}
+
+void Soldier::doSomething(Team* enemy, int maze[MSZ][MSZ], Room rooms[NUM_ROOMS])
+{
+	if (idle) {
+		if (isMoving) {
+			Move(maze);
+			if (fabs(x - targetX) < FIRE_RANGE && fabs(y - targetY) < FIRE_RANGE)
+				pCurrentState->Transform(this);
+			if (fabs(x - targetX) < STOP_NEAR_ENEMY_RANGE && fabs(y - targetY) < STOP_NEAR_ENEMY_RANGE)
+				pCurrentState->Transform(this);
+		}
+		int *arr = enemy->getRoomsOfNpc(rooms);
+		double targetToChase = 0;
+		int numNpcSameRoom = 0;
+		NPC* target = nullptr;
+		for (int i = 0; i < 3; i++) {
+			if (whichRoom(this, rooms) == arr[i] && arr[i] > -1) {
+				numNpcSameRoom++;
+				double current = getDistance(this, enemy->getNpcByIndex(i));
+				if (targetToChase > current) {
+					targetToChase = current;
+					target = enemy->getNpcByIndex(i);
+				}
+			}
+		}
+		if (target) {
+			setDestination(target->getX(), target->getY());
+			pCurrentState->Transform(this);
+		}
+		if (isShooting) {
+			if (numNpcSameRoom > 1)
+				throwGrenade(maze);
+			else
+				shootBullet();
+		}
 	}
 }

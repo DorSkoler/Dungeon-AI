@@ -1,24 +1,28 @@
 #include "Bullet.h"
 #include "glut.h"
+#include "NPC.h"
 #include <math.h>
 #include <iostream>
 
 
 Bullet::Bullet()
 {
+	x = -1;
+	y = -1;
 }
 
 // angle must be in radians
-Bullet::Bullet(double x, double y, double angle, int t)
+Bullet::Bullet(double x, double y, double angle, int t, int sX, int sY)
 {
 	this->x = x;
 	this->y = y;
 	direction_angle = angle;
 	isMoving = 0;
-	team = t;
-	hitX = -1;
-	hitY = -1;
+	bullet_team = t;
+	sourceX = sX;
+	sourceY = sY;
 }
+
 
 void Bullet::show()
 {
@@ -31,35 +35,46 @@ void Bullet::show()
 	glEnd();
 }
 
+Bullet::Bullet(double x, double y, double dx, double dy, int t)
+{
+	this->x = x;
+	this->y = y;
+	isMoving = 0;
+	bullet_team = t;
+	sourceX = (int)x;
+	sourceY = (int)y;
+	this->dx = dx;
+	this->dy = dy;
+}
+
 Bullet::~Bullet()
 {
 }
 
-bool checkHit(int maze[MSZ][MSZ], int cx, int cy)
+bool Bullet::checkHit(int maze[MSZ][MSZ], int cx, int cy, int hits[NUM_PLAYERS])
 {
 	for (int i = BEGIN_COUNT_TEAM_A; i < BEGIN_COUNT_TEAM_A + 6; i++)
 	{
-		if (maze[(int)cy][(int)cx] == i)
-			return true;
+		if (maze[(int)(cy)][(int)(cx)] == i) {
+			if ((bullet_team == 1 && i > 7) || (bullet_team == 2 && i < 8)) {
+				int distance = sqrt(pow(sourceX - cx, 2) + pow(sourceY - cy, 2));
+				hits[i - BEGIN_COUNT_TEAM_A] = distance;
+				return true;
+			}
+		}
 	}
 	return false;
 }
 
-void Bullet::Move(int maze[MSZ][MSZ])
+void Bullet::Move(int maze[MSZ][MSZ], int hits[NUM_PLAYERS])
 {
-	double dx, dy;
 	if (isMoving == 1)
 	{
-		dx = cos(direction_angle);
-		dy = sin(direction_angle);
 		x += dx * SPEED_BULLET;
 		y += dy * SPEED_BULLET;
 		if (maze[(int)y][(int)x] == WALL || maze[(int)y][(int)x] == PASS)
 			isMoving++;
-		if (checkHit(maze, x, y)) {
-			hitX = x;
-			hitY = y;
-		}
+		checkHit(maze, x, y, hits);
 	}
 }
 

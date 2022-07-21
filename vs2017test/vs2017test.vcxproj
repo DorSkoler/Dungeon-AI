@@ -126,6 +126,7 @@
     <ClCompile Include="FightMode.cpp" />
     <ClCompile Include="FillAmmoSoldier.cpp" />
     <ClCompile Include="FillMyHpBar.cpp" />
+    <ClCompile Include="Functions.cpp" />
     <ClCompile Include="GoToArsenal.cpp" />
     <ClCompile Include="GoToPharmacy.cpp" />
     <ClCompile Include="GoToSoldier.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="FightMode.h" />
     <ClInclude Include="FillAmmoSoldier.h" />
     <ClInclude Include="FillMyHpBar.h" />
+    <ClInclude Include="Functions.h" />
     <ClInclude Include="glut.h" />
     <ClInclude Include="GoToArsenal.h" />
     <ClInclude Include="GoToPharmacy.h" />

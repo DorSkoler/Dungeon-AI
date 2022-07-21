@@ -69,6 +69,10 @@ void ArmourBearer::DrawMyHp()
 	glutBitmapCharacter(GLUT_BITMAP_8_BY_13, num_char1[0]);
 }
 
+void ArmourBearer::doSomething(int maze[MSZ][MSZ])
+{
+}
+
 bool ArmourBearer::getSupplies(int g, int m)
 {
 	if (magazines.size() + m > MAX_MAGAZINE_AB || g + grenade_count > MAX_GRENADES_AB)

@@ -114,6 +114,9 @@
     <ClCompile Include="Team.cpp">
       <Filter>Source Files\Structure</Filter>
     </ClCompile>
+    <ClCompile Include="Functions.cpp">
+      <Filter>Source Files\Structure</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArmourBearer.h">
@@ -182,9 +185,6 @@
     <ClInclude Include="Soldier.h">
       <Filter>Header Files\NPC\Soldier</Filter>
     </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>Header Files\NPC</Filter>
-    </ClInclude>
     <ClInclude Include="GoToArsenal.h">
       <Filter>Header Files\NPC\ArmourBearer</Filter>
     </ClInclude>
@@ -192,6 +192,12 @@
       <Filter>Header Files\NPC\ArmourBearer</Filter>
     </ClInclude>
     <ClInclude Include="Team.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions.h">
       <Filter>Header Files\Structure</Filter>
     </ClInclude>
   </ItemGroup>

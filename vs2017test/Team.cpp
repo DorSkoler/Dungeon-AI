@@ -47,11 +47,11 @@ void Team::setTeamInfo(int cx, int cy)
 	x = cx;
 	y = cy;
 	if (s1)
-		s1->setInfoXandY(cx, cy);
+		s1->setInfoXandY(cx, cy - 15);
 	if (s2)
-		s2->setInfoXandY(cx, cy - 15);
+		s2->setInfoXandY(cx, cy - 30);
 	if (ab)
-		ab->setInfoXandY(cx, cy - 30);
+		ab->setInfoXandY(cx, cy);
 }
 
 void Team::drawInfo()
@@ -84,8 +84,8 @@ void Team::drawInfo()
 			glutBitmapCharacter(GLUT_BITMAP_8_BY_13, string1[i]);
 		}
 	}
+	glColor3d(0, 0, 0);
 	if (s1) {
-		glColor3d(0, 0, 0);
 		unsigned char string2[] = "Soldier1-";
 		w = glutBitmapLength(GLUT_BITMAP_8_BY_13, string2);
 		glRasterPos2f(s1->getInfoX() - 19, s1->getInfoY() - 1);
@@ -116,47 +116,99 @@ void Team::drawInfo()
 }
 
 
-std::vector<Bullet*> Team::checkMoveBullets(int maze[MSZ][MSZ])
+void Team::checkMoveBullets(int maze[MSZ][MSZ], int hits[NUM_PLAYERS])
 {
 	Bullet* hit1 = nullptr, *hit2 = nullptr;
 	std::vector<Bullet*> hittingBullets;
 	if (s1) {
-		hit1 = s1->MoveBullets(maze);
-		if (hit1)
-			hittingBullets.push_back(hit1);
+		s1->MoveBullets(maze, hits);
 		s1->Move(maze);
 	}
 	if (s2) {
-		hit2 = s2->MoveBullets(maze);
-		if (hit2)
-			hittingBullets.push_back(hit2);
+		s2->MoveBullets(maze, hits);
 	}
 	
 	//s2->Move(maze);
 	//ab->Move(maze);
-	return hittingBullets;
 }
 
-void Team::gotHit(int cx, int cy)
+void Team::gotHit(int hits[NUM_PLAYERS])
 {
-	if (s1 && s1->isThisXandYisNPC(cx, cy))
-		s1->setHp(50);
-	if (s2 && s2->isThisXandYisNPC(cx, cy))
-		s2->setHp(50);
-	if (ab && ab->isThisXandYisNPC(cx, cy))
-		ab->setHp(50);
+	if (s1 && hits[(team_num - 1) * 3 + 1] > 0)
+		{
+			s1->setHp(HIT_RATE / hits[(team_num - 1) * 3 + 1]);
+			std::cout << "s1 got hit in team " << team_num << ", -" << HIT_RATE / hits[(team_num - 1) * 3 + 1] << "hp\n";
+			hits[(team_num - 1) * 3 + 1] = 0;
+		}
+	if (s2 && hits[(team_num - 1) * 3 + 2] > 0)
+		{
+			s2->setHp(HIT_RATE / hits[(team_num - 1) * 3 + 2]);
+			std::cout << "s2 got hit in team " << team_num << ", -" << HIT_RATE / hits[(team_num - 1) * 3 + 2] << "hp\n";
+			hits[(team_num - 1) * 3 + 2] = 0;
+		}
+
+	if (ab && hits[(team_num - 1) * 3] > 0)
+		{
+			ab->setHp(HIT_RATE / hits[(team_num - 1) * 3]);
+			std::cout << "ab got hit in team " << team_num << ", -" << HIT_RATE / hits[(team_num - 1) * 3] << "hp\n";
+			hits[(team_num - 1) * 3] = 0;
+		}
 }
 
-bool Team::checkAlive()
+bool Team::checkAlive(int maze[MSZ][MSZ])
 {
-	if (s1 && s1->getHp() == 0)
+	int cx, cy;
+	if (s1 && s1->getHp() == 0) {
+		cy = (int)(s1->getY());
+		cx = (int)(s1->getX());
+		maze[cy][cx] = SPACE;
 		s1 = nullptr;
-	if (s2 && s2->getHp() == 0)
+	}
+	if (s2 && s2->getHp() == 0) {
+		cy = (int)(s2->getY());
+		cx = (int)(s2->getX());
+		maze[cy][cx] = SPACE;
 		s2 = nullptr;
-	if (ab && ab->getHp() == 0)
+	}
+	if (ab && ab->getHp() == 0) {
+		cy = (int)(ab->getY());
+		cx = (int)(ab->getX());
+		maze[cy][cx] = SPACE;
 		ab = nullptr;
+	}
 	allDead = !(ab || s1 || s2);
 	return allDead;
+}
+
+void Team::doSomething(Team* enemy ,int maze[MSZ][MSZ], Room rooms[NUM_ROOMS])
+{
+	if (s1)
+		s1->doSomething(enemy ,maze, rooms);
+	if (s2)
+		s2->doSomething(enemy, maze, rooms);
+	if (ab)
+		ab->doSomething(maze);
+}
+
+int* Team::getRoomsOfNpc(Room rooms[NUM_ROOMS]) {
+	int roomsArr[3] = { -1 };
+	if (ab)
+		roomsArr[0] = whichRoom(ab, rooms);
+	if (s1)
+		roomsArr[1] = whichRoom(s1, rooms);
+	if (s2)
+		roomsArr[2] = whichRoom(s2, rooms);
+	return roomsArr;
+}
+
+NPC* Team::getNpcByIndex(int index)
+{
+	if (index == 0)
+		return ab;
+	if (index == 1)
+		return s1;
+	if (index == 2)
+		return s2;
 }
 
 void Team::checkShowBullets()

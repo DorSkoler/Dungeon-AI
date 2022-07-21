@@ -1,4 +1,5 @@
 #include "Magazine.h"
+#include <iostream>
 
 Magazine::Magazine()
 {
@@ -6,11 +7,20 @@ Magazine::Magazine()
 		bullets.push_back(new Bullet());
 }
 
-void Magazine::fire(double x, double y, double angle, int t)
+void Magazine::fire(double x, double y, double angle, int t, int sX, int sY)
 {
 	if (!bullets.empty()) {
 		bullets.pop_back();
-		bullets.push_back(new Bullet(x, y, angle, t));
+		bullets.push_back(new Bullet(x, y, angle, t, sX, sY));
+		bullets.back()->Fire();
+	}
+}
+
+void Magazine::fire(double x, double y, double dx, double dy, int t)
+{
+	if (!bullets.empty()) {
+		bullets.pop_back();
+		bullets.push_back(new Bullet(x, y, dx, dy, t));
 		bullets.back()->Fire();
 	}
 }
@@ -21,13 +31,12 @@ void Magazine::show()
 		bullets.back()->show();
 }
 
-bool Magazine::Move(int maze[MSZ][MSZ])
+bool Magazine::Move(int maze[MSZ][MSZ], int hits[NUM_PLAYERS])
 {
 	if (bullets.back()->getIsMoving() == 1)
-		bullets.back()->Move(maze);
+		bullets.back()->Move(maze, hits);
+
 	if (bullets.back()->getIsMoving() == 2) {
-		if (bullets.back()->getHitX() > -1)
-			hit = bullets.back();
 		bullets.pop_back();
 		return false;
 	}

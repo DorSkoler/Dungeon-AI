@@ -1,8 +1,9 @@
 #pragma once
-#include "NPC.h"
 #include "glut.h"
 #include <math.h>
 #include <string>
+#include "Team.h"
+#include "Functions.h"
 
 
 
@@ -10,7 +11,7 @@ class Soldier :
     public NPC
 {
 private:
-    bool isShooting = false;
+    
     Grenade *currentGrenade = nullptr;
 public:
     Soldier();
@@ -19,11 +20,12 @@ public:
     void DrawMe(const char* string);
     bool getIsShooting() { return isShooting; };
     void DrawMyHp();
+    
 
-    Bullet* MoveBullets(int maze[MSZ][MSZ]);
+    Bullet* MoveBullets(int maze[MSZ][MSZ], int hits[NUM_PLAYERS]);
     void showBullets();
     void shootBullet();
     void throwGrenade(int maze[MSZ][MSZ]);
-    //void relodeMagazine();
+    void doSomething(Team* enemy, int maze[MSZ][MSZ], Room rooms[NUM_ROOMS]);
 };
 
