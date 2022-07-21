@@ -1,15 +1,15 @@
 #pragma once
-//#include "Soldier.h"
+#include "Soldier.h"
 #include "Definitions.h"
-//#include "Room.h"
-//#include "ArmourBearer.h"
+#include "Room.h"
+#include "ArmourBearer.h"
 
 class Team
 {
 private:
-	Soldier * s1;
-	Soldier * s2;
-	ArmourBearer * ab;
+	Soldier * s1 = nullptr;
+	Soldier * s2 = nullptr;
+	ArmourBearer * ab = nullptr;
 	int team_num;
 	int x, y;
 	bool allDead = false;

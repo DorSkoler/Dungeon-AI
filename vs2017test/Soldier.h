@@ -6,7 +6,6 @@
 #include "Functions.h"
 
 
-
 class Soldier : 
     public NPC
 {
