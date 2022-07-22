@@ -1,0 +1,14 @@
+#pragma once
+#include "Definitions.h"
+#include "NPC.h"
+#include "Room.h"
+
+class Team;
+
+double getDirectionAngle(NPC* source, NPC* target);
+void getMyTarget(NPC* pn, NPC* pTarget);
+int whichRoom(NPC* pn, Room rooms[NUM_ROOMS]);
+double getDistance(NPC* source, NPC* target);
+NPC* getTarget(Room rooms[NUM_ROOMS], Team* enemy, NPC* me);
+void CreateSecurityMap(Room* room, double security_map[MSZ][MSZ], int maze[MSZ][MSZ]);
+void CreateVisibilityMap(NPC* pn, int maze[MSZ][MSZ], double visibility_map[MSZ][MSZ]);

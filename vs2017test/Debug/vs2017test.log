@@ -1,6 +1,1 @@
-﻿  GoHome.cpp
-  main.cpp
-C:\Users\User\Desktop\vs2017test\vs2017test\main.cpp(12,31): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\Users\User\Desktop\vs2017test\vs2017test\main.cpp(150,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  Generating Code...
-  vs2017test.vcxproj -> C:\Users\User\Desktop\vs2017test\Debug\vs2017test.exe
+﻿  vs2017test.vcxproj -> C:\Users\User\Desktop\sdfsdf\Final_Project\Debug\vs2017test.exe

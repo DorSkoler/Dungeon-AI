@@ -1,132 +1,211 @@
 #include "NPC.h"
 #include "glut.h"
-#include "GoToForest.h"
+#include "Definitions.h"
 #include <math.h>
+#include <iostream>
+#include <string>
+#include "Cell.h"
+#include <thread>
+#include <format>
 
-
-
-NPC::NPC(double x, double y)
+void NPC::DrawMe()
 {
-	this->x = x;
-	this->y = y;
-//	isMoving = true;
-//	dx = 0.5;
-//	dy = 0.5;
-//	isGettingWood = false;
-	numWood = 0;
-	hp = MAX_HP;
-	atHome = false;
-	goingHome = false;
-	pCurrentState = new GoToForest();
-	pCurrentState->OnEnter(this);
+	if (team == TEAM_RED)
+		glColor3d(1, 0, 0);
+	else
+		glColor3d(0, 0, 1);
+
+	// head
+	glLineWidth(2);
+	glBegin(GL_LINE_LOOP);
+	double r = 0.5;
+	for (int i = 0; i < 100; i++) {
+		float theta = 2.0f * 3.1415926f * float(i) / float(100);//get the current angle 
+		float cx = r * cosf(theta);//calculate the x component 
+		float cy = r * sinf(theta);//calculate the y component 
+		glVertex2f(cx + x + 0.3, cy + y + 2);//output vertex 
+	}
+	glEnd();
+
+	// body
+	glBegin(GL_LINES);
+	glVertex2d(x + 0.3, y + 1.4);
+	glVertex2d(x + 0.3, y);
+	glEnd();
+
+	// right leg
+	glBegin(GL_LINES);
+	glVertex2d(x + 0.3, y);
+	glVertex2d(x + 1, y - 1);
+	glEnd();
+
+	// left leg
+	glBegin(GL_LINES);
+	glVertex2d(x + 0.3, y);
+	glVertex2d(x - 0.4, y - 1);
+	glEnd();
+
+	// left arm
+	glBegin(GL_LINES);
+	glVertex2d(x + 0.3, y + 1);
+	glVertex2d(x - 0.4, y);
+	glEnd();
+
+	// right arm
+	glBegin(GL_LINES);
+	glVertex2d(x + 0.3, y + 1);
+	glVertex2d(x + 1, y);
+	glEnd();
 }
 
 NPC::NPC()
 {
+	targetX = -1;
+	targetY = -1;
+	direction_angle = (rand() % 360) * 3.14 / 180;
+	spaceOrPass = SPACE;
 }
 
-
-NPC::~NPC()
+void NPC::setDestination(double destX, double destY, NPC* target)
 {
-}
-
-void NPC::DoSomeThing()
-{
-	if (atHome)
-	{
-		hp += 0.5;
-		// check if the NPC should do something else
-		if (hp >= MAX_HP)
-			pCurrentState->Transform(this);
-	}
-	else // not at home
-	{
-		hp -= 0.1;
-		// check if the NPC should do something else
-		if (hp <= MAX_HP*0.2 && !goingHome) // 20% of full HP
-			pCurrentState->Transform(this);
-
-	}
-
-	if (isMoving)
-	{
-		x += dx * SPEED;
-		y += dy * SPEED;
-		// check if the NPC should do something else
-		if (fabs(x - targetX) < 1 && fabs(y - targetY) < 1)
-			pCurrentState->Transform(this);
-	}
-	else if(!atHome)// not moving
-	{
-		if (isGettingWood)
-		{
-			numWood++;
-			// check if the NPC should do something else
-			if(numWood>=MAX_WOOD)
-				pCurrentState->Transform(this);
-		}
-		else
-		{
-			numWood--;
-			// check if the NPC should do something else
-			if (numWood <= MIN_WOOD)
-				pCurrentState->Transform(this);
-		}
-	}
-}
-
-void NPC::setDestination(double destX, double destY)
-{
+	pTarget = target;
 	double distance;
-	targetX = destX; 
-	targetY = destY; 
+	gDistance = 0;
+	movesCahse = 0;
+	targetX = destX;
+	targetY = destY;
 	distance = sqrt(pow(targetX - x, 2) + pow(targetY - y, 2));
 	// [dx,dy] must be vector of length 1 to the direction to target
 	dx = (targetX - x) / distance;
 	dy = (targetY - y) / distance;
-
+	direction_angle = acos(dx);
 }
 
-void NPC::DrawMe()
+bool NPC::isThisXandYisNPC(int cx, int cy)
 {
-	// body
-	glColor3d(1, 0.8, 0.6);
-	glBegin(GL_POLYGON);
-	glVertex2d(x - 1, y);
-	glVertex2d(x , y+2);
-	glVertex2d(x + 1, y);
-	glVertex2d(x , y-2);
-	glEnd();
-	// frame
-	glColor3d(0, 0, 0);
-	glBegin(GL_LINE_LOOP);
-	glVertex2d(x - 1, y);
-	glVertex2d(x, y + 2);
-	glVertex2d(x + 1, y);
-	glVertex2d(x, y - 2);
-	glEnd();
-	// cart
-	glColor3d(0, 0, 0);
-	glBegin(GL_LINE_STRIP);
-	glVertex2d(x - 3, y);
-	glVertex2d(x - 3, y-2);
-	glVertex2d(x - 1, y - 2);
-	glVertex2d(x - 1, y );
-	glEnd();
-	// draw woods
-	for (int i = 0; i < numWood / 100; i++)
-	{
-		glColor3d(0.6, 0.4, 0);
-		glBegin(GL_LINES);
-		glVertex2d(x - 3, y - 2 + (i)*0.2);
-		glVertex2d(x - 1, y - 2 + (i)*0.2);
-		glEnd();
-	}
-	// hp
-	glColor3d(1, 0, 0);
-	glBegin(GL_LINES);
-	glVertex2d(x - 1, y + 2.5);
-	glVertex2d(x - 1 + 2*hp/MAX_HP, y + 2.5);
-	glEnd();
-
+	return (int)(y) == cy && (int)(x) == cx;
 }
+
+bool canNPCmove(int cx, int cy, int maze[MSZ][MSZ], int mazeNum)
+{
+	if (maze[(int)cy][(int)cx] == PASS)
+		return true;
+	if (maze[(int)cy][(int)cx] == SPACE)
+		return true;
+	if (maze[(int)cy][(int)cx] == mazeNum)
+		return true;
+	return false;
+}
+
+bool NPC::Move(int maze[MSZ][MSZ])
+{
+	double chosenX, chosenY;
+	double xArr[4], yArr[4];
+
+	double distance = sqrt(pow(pTarget->getX() - x, 2) + pow(pTarget->getY() - y, 2));
+	dx = (pTarget->getX() - x) / distance;
+	dy = (pTarget->getY() - y) / distance;
+	direction_angle = acos(dx);
+
+	xArr[0] = x + dx * SPEED_SOLDIER;
+	xArr[1] = x - dx * SPEED_SOLDIER;
+	xArr[2] = x + dx * SPEED_SOLDIER;
+	xArr[3] = x - dx * SPEED_SOLDIER;
+
+	yArr[0] = y + dy * SPEED_SOLDIER;
+	yArr[1] = y + dy * SPEED_SOLDIER;
+	yArr[2] = y - dy * SPEED_SOLDIER;
+	yArr[3] = y - dy * SPEED_SOLDIER;
+
+	int min = MAXINT;
+	for (int i = 0; i < 4; i++) {
+		double h = sqrt(pow(xArr[i] - pTarget->getX(), 2) + pow(yArr[i] - pTarget->getY(), 2));
+		if (min > h) {
+			chosenX = xArr[i];
+			chosenY = yArr[i];
+			min = h;
+		}
+	}
+
+	if (canNPCmove(chosenX, chosenY, maze, myMazeNum))
+	{
+		movesCahse++;
+		maze[(int)y][(int)x] = spaceOrPass;
+		spaceOrPass = maze[(int)chosenY][(int)chosenX];
+		maze[(int)chosenY][(int)chosenX] = myMazeNum;
+		x = chosenX;
+		y = chosenY;
+		return true;
+	}
+	else {
+		isMoving = false;
+	}
+	return false;
+}
+
+void NPC::drawInfo()
+{
+	glColor3d(0, 0, 0);
+	unsigned char string[] = "| Grenades -";
+	int w = glutBitmapLength(GLUT_BITMAP_8_BY_13, string);
+	glRasterPos2f(xForInfo + 21, yForInfo - 1);
+	for (int i = 0; i < 13; i++) {
+		glutBitmapCharacter(GLUT_BITMAP_8_BY_13, string[i]);
+	}
+
+	unsigned char string1[] = "| Magazines -";
+	w = glutBitmapLength(GLUT_BITMAP_8_BY_13, string1);
+	glRasterPos2f(xForInfo + 21, yForInfo - 6);
+	for (int i = 0; i < 14; i++) {
+		glutBitmapCharacter(GLUT_BITMAP_8_BY_13, string1[i]);
+	}
+
+	std::string string2 = std::to_string((int)(x));
+	glRasterPos2f(xForInfo, yForInfo - 6);
+	for (int i = 0; i < 2; i++) {
+		glutBitmapCharacter(GLUT_BITMAP_8_BY_13, string2[i]);
+	}
+
+	std::string string3 = std::to_string((int)(y));
+	glRasterPos2f(xForInfo + 8, yForInfo - 6);
+	for (int i = 0; i < 2; i++) {
+		glutBitmapCharacter(GLUT_BITMAP_8_BY_13, string3[i]);
+	}
+
+	std::string tmp = std::to_string(magazines.size());
+	char const* num_char = tmp.c_str();
+	w = glutBitmapLength(GLUT_BITMAP_8_BY_13, (unsigned char*)num_char);
+	glRasterPos2f(xForInfo + 48, yForInfo - 6);
+	glutBitmapCharacter(GLUT_BITMAP_8_BY_13, num_char[0]);
+
+
+	w = glutBitmapLength(GLUT_BITMAP_8_BY_13, (unsigned char*)"\\");
+	glRasterPos2f(xForInfo + 51, yForInfo - 6);
+	glutBitmapCharacter(GLUT_BITMAP_8_BY_13, '\\');
+	
+	glRasterPos2f(xForInfo + 51, yForInfo - 1);
+	glutBitmapCharacter(GLUT_BITMAP_8_BY_13, '\\');
+
+	std::string tmp1 = std::to_string(grenade_count);
+	char const* num_char1 = tmp1.c_str();
+	w = glutBitmapLength(GLUT_BITMAP_8_BY_13, (unsigned char*)num_char1);
+	glRasterPos2f(xForInfo + 48, yForInfo - 1);
+	glutBitmapCharacter(GLUT_BITMAP_8_BY_13, num_char1[0]);
+}
+
+NPC::NPC(double cx, double cy, int t)
+{
+	x = cx;
+	y = cy;
+	team = t;
+}
+
+void NPC::setHp(int _hp) 
+{
+	if (_hp > hp)
+		hp = 0;
+	else
+		hp -= _hp;
+}
+
+

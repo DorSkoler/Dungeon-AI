@@ -118,26 +118,62 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DropWood.cpp" />
-    <ClCompile Include="GettingWood.cpp" />
-    <ClCompile Include="GoHome.cpp" />
-    <ClCompile Include="GoToForest.cpp" />
-    <ClCompile Include="GoToWarehouse.cpp" />
+    <ClCompile Include="ArmourBearer.cpp" />
+    <ClCompile Include="Arsenal.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="CompareCells.cpp" />
+    <ClCompile Include="FightMode.cpp" />
+    <ClCompile Include="FillAmmoSoldier.cpp" />
+    <ClCompile Include="FillMyHpBar.cpp" />
+    <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="GoToArsenal.cpp" />
+    <ClCompile Include="GoToPharmacy.cpp" />
+    <ClCompile Include="GoToSoldier.cpp" />
+    <ClCompile Include="Grenade.cpp" />
+    <ClCompile Include="HelpTeamSoldier.cpp" />
+    <ClCompile Include="IdleAB.cpp" />
+    <ClCompile Include="IdleSoldier.cpp" />
+    <ClCompile Include="Magazine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NPC.cpp" />
-    <ClCompile Include="State.cpp" />
-    <ClCompile Include="StayAtHome.cpp" />
+    <ClCompile Include="Pharmacy.cpp" />
+    <ClCompile Include="Room.cpp" />
+    <ClCompile Include="Run.cpp" />
+    <ClCompile Include="Soldier.cpp" />
+    <ClCompile Include="Team.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DropWood.h" />
-    <ClInclude Include="GettingWood.h" />
+    <ClInclude Include="ArmourBearer.h" />
+    <ClInclude Include="Arsenal.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Cell.h" />
+    <ClInclude Include="CompareCells.h" />
+    <ClInclude Include="Definitions.h" />
+    <ClInclude Include="FightMode.h" />
+    <ClInclude Include="FillAmmoSoldier.h" />
+    <ClInclude Include="FillMyHpBar.h" />
+    <ClInclude Include="Functions.h" />
     <ClInclude Include="glut.h" />
-    <ClInclude Include="GoHome.h" />
-    <ClInclude Include="GoToForest.h" />
-    <ClInclude Include="GoToWarehouse.h" />
+    <ClInclude Include="GoToArsenal.h" />
+    <ClInclude Include="GoToPharmacy.h" />
+    <ClInclude Include="GoToSoldier.h" />
+    <ClInclude Include="Grenade.h" />
+    <ClInclude Include="HelpTeamSoldier.h" />
+    <ClInclude Include="IdleAB.h" />
+    <ClInclude Include="IdleSoldier.h" />
+    <ClInclude Include="Magazine.h" />
     <ClInclude Include="NPC.h" />
+    <ClInclude Include="Pharmacy.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Room.h" />
+    <ClInclude Include="Run.h" />
+    <ClInclude Include="Soldier.h" />
     <ClInclude Include="State.h" />
-    <ClInclude Include="StayAtHome.h" />
+    <ClInclude Include="Team.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="vs2017test.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

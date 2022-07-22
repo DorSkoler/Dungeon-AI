@@ -1,13 +1,66 @@
-﻿  DropWood.cpp
-  GettingWood.cpp
-C:\Users\User\Desktop\vs2017test\vs2017test\GettingWood.cpp(22,31): error C2061: syntax error: identifier 'GoToForest'
-  GoHome.cpp
-  GoToForest.cpp
-  GoToWarehouse.cpp
-  main.cpp
-C:\Users\User\Desktop\vs2017test\vs2017test\main.cpp(12,31): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\Users\User\Desktop\vs2017test\vs2017test\main.cpp(150,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  NPC.cpp
-  State.cpp
-  StayAtHome.cpp
+﻿  main.cpp
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Magazine.h(17,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\NPC.h(43,25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(12,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(12,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(12,13): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(13,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(13,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(13,13): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(20,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(20,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(20,25): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(21,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(21,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(21,25): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\main.cpp(51,27): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\main.cpp(56,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\main.cpp(540,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\main.cpp(554,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\main.cpp(555,32): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+  Soldier.cpp
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Magazine.h(17,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\NPC.h(43,25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(12,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(12,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(12,13): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(13,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(13,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(13,13): error C2238: unexpected token(s) preceding ';'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(20,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(20,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(20,25): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(21,9): error C2143: syntax error: missing ';' before '*'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(21,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.h(21,25): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Definitions.h(20,31): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.cpp(34,27): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.cpp(34,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.cpp(56,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.cpp(56,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.cpp(62,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.cpp(62,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  Team.cpp
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Magazine.h(17,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\NPC.h(43,25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.h(28,22): error C2061: syntax error: identifier 'Team'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(64,21): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(64,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(73,27): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(73,19): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(82,27): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(82,19): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(91,53): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(91,32): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(100,53): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(100,32): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(109,53): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(109,32): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(139,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(145,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(152,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(186,37): error C2660: 'Soldier::doSomething': function does not take 3 arguments
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.h(28,10): message : see declaration of 'Soldier::doSomething'
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Team.cpp(188,37): error C2660: 'Soldier::doSomething': function does not take 3 arguments
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.h(28,10): message : see declaration of 'Soldier::doSomething'
   Generating Code...
