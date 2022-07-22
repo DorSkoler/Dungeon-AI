@@ -78,7 +78,7 @@ void Bullet::Move(int maze[MSZ][MSZ], int hits[NUM_PLAYERS])
 	}
 }
 
-void Bullet::SimulateMotion(int maze[MSZ][MSZ], double security_map[MSZ][MSZ], double damage)
+void Bullet::SimulateMotion(const int maze[MSZ][MSZ], double security_map[MSZ][MSZ], double damage)
 {
 	double dx, dy;
 	dx = cos(direction_angle);
@@ -90,13 +90,13 @@ void Bullet::SimulateMotion(int maze[MSZ][MSZ], double security_map[MSZ][MSZ], d
 
 		security_map[(int)y][(int)x] += damage; // drawing in map
 
-		if (maze[(int)y][(int)x] == WALL)
+		if (maze[(int)y][(int)x] == WALL || maze[(int)y][(int)x] == PASS)
 			isMoving = false;
 	}
 
 }
 
-void Bullet::SimulateVisibility(int maze[MSZ][MSZ], double visibility_map[MSZ][MSZ])
+void Bullet::SimulateVisibility(const int maze[MSZ][MSZ], double visibility_map[MSZ][MSZ])
 {
 	double dx, dy;
 	dx = cos(direction_angle);
@@ -108,7 +108,7 @@ void Bullet::SimulateVisibility(int maze[MSZ][MSZ], double visibility_map[MSZ][M
 
 		visibility_map[(int)y][(int)x] = 1; // drawing in map
 
-		if (maze[(int)y][(int)x] == WALL)
+		if (maze[(int)y][(int)x] == WALL || maze[(int)y][(int)x] == PASS)
 			isMoving = false;
 	}
 

@@ -13,10 +13,7 @@ void IdleSoldier::Transform(NPC* pn)
 		pn->getCurrentState()->OnEnter(pn);
 	}
 	else if(pn->getPTarget()) {
-		if (fabs(pn->getX() - pn->getPTarget()->getX()) < STOP_NEAR_ENEMY_RANGE) {
-			pn->setIsMoving(false);
-		}
-		if (fabs(pn->getX() - pn->getTargetX()) < FIRE_RANGE) {
+		if (fabs(pn->getX() - pn->getTargetX()) < FIGHTING_RANGE) {
 			pn->setInterruptedState(this);
 			pn->setCurrentState(new FightMode());
 			pn->getCurrentState()->OnEnter(pn);

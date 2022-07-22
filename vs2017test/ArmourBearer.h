@@ -8,7 +8,7 @@ private:
     
 public:
     ArmourBearer();
-    ArmourBearer(double cx, double cy, int t);
+    ArmourBearer(double cx, double cy, int t, Room* r);
     ~ArmourBearer();
 
     void init();

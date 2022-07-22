@@ -20,15 +20,15 @@ Team::Team(int t, Room* r, int maze[MSZ][MSZ], int begin)
 	int cx, cy;
 	findXandY(maze, &cx, &cy, minX, minY, maxX, maxY);
 	maze[cy][cx] = begin;
-	ab = new ArmourBearer(cx, cy, t);
+	ab = new ArmourBearer(cx, cy, t, r);
 	ab->setMazeNum(begin);
 	findXandY(maze, &cx, &cy, minX, minY, maxX, maxY);
 	maze[cy][cx] = begin+1;
-	s1 = new Soldier(cx, cy, t);
+	s1 = new Soldier(cx, cy, t, r);
 	s1->setMazeNum(begin+1);
 	findXandY(maze, &cx, &cy, minX, minY, maxX, maxY);
 	maze[cy][cx] = begin+2;
-	s2 = new Soldier(cx, cy, t);
+	s2 = new Soldier(cx, cy, t, r);
 	s2->setMazeNum(begin+2);
 }
 
@@ -194,6 +194,16 @@ NPC* Team::getNpcByIndex(int index)
 		return s1;
 	if (index == 2)
 		return s2;
+}
+
+void Team::checkLocation(Room rooms[NUM_ROOMS])
+{
+	if (s1)
+		s1->checkPassOrRoom(rooms);
+	if (s2)
+		s2->checkPassOrRoom(rooms);
+	if (ab)
+		ab->checkPassOrRoom(rooms);
 }
 
 void Team::checkShowBullets()

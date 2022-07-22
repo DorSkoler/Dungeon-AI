@@ -22,8 +22,8 @@ public:
 	void Fire() { isMoving++; }
 	void Move(int maze[MSZ][MSZ], int hits[NUM_PLAYERS]);
 	int getIsMoving() { return isMoving; }
-	void SimulateMotion(int maze[MSZ][MSZ], double security_map[MSZ][MSZ], double damage);
-	void SimulateVisibility(int maze[MSZ][MSZ], double visibility_map[MSZ][MSZ]);
+	void SimulateMotion(const int maze[MSZ][MSZ], double security_map[MSZ][MSZ], double damage);
+	void SimulateVisibility(const int maze[MSZ][MSZ], double visibility_map[MSZ][MSZ]);
 
 };
 

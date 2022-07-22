@@ -8,12 +8,13 @@ Soldier::Soldier()
 	init();
 }
 
-Soldier::Soldier(double cx, double cy, int t)
+Soldier::Soldier(double cx, double cy, int t, Room* r)
 {
 	init();
 	x = cx;
 	y = cy;
 	team = t;
+	currentRoom = r;
 }
 
 void Soldier::init()
@@ -68,11 +69,11 @@ void Soldier::DrawMyHp()
 
 Bullet* Soldier::MoveBullets(int maze[MSZ][MSZ], int hits[NUM_PLAYERS])
 {
-	if (isShooting && !currentGrenade) {
+	if (magazines.size() > 0) {
 		Magazine* pm = *(magazines.begin());
 		isShooting = pm->Move(maze, hits);
 	}
-	else if (currentGrenade) {
+	if (currentGrenade) {
 		if (currentGrenade->Exploding(maze, hits))
 			currentGrenade = nullptr;
 	}
@@ -81,35 +82,32 @@ Bullet* Soldier::MoveBullets(int maze[MSZ][MSZ], int hits[NUM_PLAYERS])
 
 void Soldier::showBullets()
 {
-	if (isShooting && !currentGrenade) {
-		Magazine* pm = *(magazines.begin());
-		pm->show();
-	}
-	else if (currentGrenade) {
+	Magazine* pm = *(magazines.begin());
+	pm->show();
+	if (currentGrenade) {
+		std::cout << "here\n";
 		currentGrenade->show();
 	}
 }
 
 void Soldier::shootBullet()
 {
-	if (!isShooting && !currentGrenade) {
+	if (magazines.empty())
+		return;
+	Magazine* pm = *(magazines.begin());
+	if (pm->isEmpty()) {
+		magazines.erase(magazines.begin());
 		if (magazines.empty())
 			return;
-		Magazine* pm = *(magazines.begin());
-		if (pm->isEmpty()) {
-			magazines.erase(magazines.begin());
-			if (magazines.empty())
-				return;
-			pm = *(magazines.begin());
-		}
-		isShooting = true;
-		pm->fire(x, y, dx, dy, team);
+		pm = *(magazines.begin());
 	}
+	isShooting = true;
+	pm->fire(x, y, dx, dy, team);
 }
 
 void Soldier::throwGrenade(int maze[MSZ][MSZ])
 {
-	if (currentGrenade == nullptr && !isShooting) {
+	if (currentGrenade == nullptr) {
 		if (grenade_count == 0)
 			return;
 		int min = -GRENADE_THROW_RANGE;
@@ -120,6 +118,7 @@ void Soldier::throwGrenade(int maze[MSZ][MSZ])
 		} while (maze[(int)y + rangeY][(int)x + rangeX] == WALL);
 		currentGrenade = new Grenade(x + rangeX, y + rangeY, team, (int)x, (int)y);
 		currentGrenade->Explode();
+		std::cout << "exploded\n";
 		grenade_count--;
 	}
 }
@@ -127,26 +126,47 @@ void Soldier::throwGrenade(int maze[MSZ][MSZ])
 void Soldier::doSomething(Team* enemy, int maze[MSZ][MSZ], Room rooms[NUM_ROOMS])
 {
 	NPC* target = nullptr;
+	int myRoom = whichRoom(this, rooms);
 	if (idle) {
+		if (movesChased > 50) {
+			int roomNum;
+			do {
+				roomNum = rand() % NUM_ROOMS;
+			} while (roomNum != myRoom);
+			NPC* roomTarget = new NPC(rooms[roomNum].getCenterX(), rooms[roomNum].getCenterY(), 0);
+			setDestination(roomTarget->getX(), roomTarget->getY(), roomTarget);
+			movesChased = 0;
+		}
 		if (isMoving && pTarget) {
-			this->Move(maze);
-			if (fabs(x - pTarget->getX()) < STOP_NEAR_ENEMY_RANGE && fabs(y - pTarget->getY()) < STOP_NEAR_ENEMY_RANGE){
-				std::cout << "here moving, " << fabs(y - pTarget->getY()) << "\n";
+			this->Move(maze, false);
+			if (fabs(x - pTarget->getX()) < STOP_NEAR_ENEMY_RANGE && fabs(y - pTarget->getY()) < STOP_NEAR_ENEMY_RANGE)
+				isMoving = false;
+			else
+				isMoving = true;
+
+			if (fabs(x - pTarget->getX()) < FIGHTING_RANGE && fabs(y - pTarget->getY()) < FIGHTING_RANGE) {
+				std::cout << "change to fight\n";
 				pCurrentState->Transform(this);
 			}
 		}
 
-		pTarget = getTarget(rooms, enemy, this);
+		target = getTarget(rooms, enemy, this);
 		if (target) {
-			setDestination(pTarget->getX(), pTarget->getY(), pTarget);
+			setDestination(target->getX(), target->getY(), target);
 		}
 
 		if (hp < MAX_HP_SOLDIER) {
 			pCurrentState->Transform(this);
 		}
 	}
-	else if (fighting) {
-		int myRoom = whichRoom(this, rooms);
+
+	if (fighting) {
+		
+		if (fabs(x - pTarget->getX()) > FIGHTING_RANGE && fabs(y - pTarget->getY()) > FIGHTING_RANGE) {
+			std::cout << "stopped fighting\n";
+			pCurrentState->Transform(this);
+		}
+
 		int numNpcSameRoom = 0;
 		for (int i = 0; i < 3; i++) {
 			int room = whichRoom(enemy->getNpcByIndex(i), rooms);
@@ -154,13 +174,19 @@ void Soldier::doSomething(Team* enemy, int maze[MSZ][MSZ], Room rooms[NUM_ROOMS]
 				numNpcSameRoom++;
 			}
 		}
+		double visibility_map[MSZ][MSZ] = { 0 };
+		CreateVisibilityMap(this, maze, visibility_map);
+		if (visibility_map[(int)pTarget->getY()][(int)pTarget->getX()] == 0) {
+			isShooting = false;
+		}
 		if (isShooting) {
-			std::cout << "here shooting\n";
 			if (numNpcSameRoom > 1)
-				throwGrenade(maze);
+				shootBullet();
 			else
 				shootBullet();
 		}
+
+		// check if target still alive
 		target = getTarget(rooms, enemy, this);
 		if (!target) {
 			pCurrentState->Transform(this);

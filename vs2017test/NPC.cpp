@@ -7,6 +7,8 @@
 #include "Cell.h"
 #include <thread>
 #include <format>
+#include "Room.h"
+#include "Functions.h"
 
 void NPC::DrawMe()
 {
@@ -71,7 +73,7 @@ void NPC::setDestination(double destX, double destY, NPC* target)
 	pTarget = target;
 	double distance;
 	gDistance = 0;
-	movesCahse = 0;
+	movesChased = 0;
 	targetX = destX;
 	targetY = destY;
 	distance = sqrt(pow(targetX - x, 2) + pow(targetY - y, 2));
@@ -97,50 +99,76 @@ bool canNPCmove(int cx, int cy, int maze[MSZ][MSZ], int mazeNum)
 	return false;
 }
 
-bool NPC::Move(int maze[MSZ][MSZ])
+bool NPC::Move(int maze[MSZ][MSZ], bool use_security) {
+	Cell* ps = findRoute(this, maze, true);
+	RestorePath(ps, maze);
+	return true;
+}
+
+//bool NPC::Move(int maze[MSZ][MSZ], bool use_security)
+//{
+//	double security_map[MSZ][MSZ] = {0};
+//	if (use_security)
+//		CreateSecurityMap(currentRoom, security_map, maze);
+//
+//	double chosenX, chosenY, cost = 0;
+//	double xArr[4], yArr[4];
+//
+//	double distance = sqrt(pow(pTarget->getX() - x, 2) + pow(pTarget->getY() - y, 2));
+//	dx = (pTarget->getX() - x) / distance;
+//	dy = (pTarget->getY() - y) / distance;
+//	direction_angle = acos(dx);
+//
+//	xArr[0] = x + dx * SPEED_SOLDIER;
+//	xArr[1] = x - dx * SPEED_SOLDIER;
+//	xArr[2] = x + dx * SPEED_SOLDIER;
+//	xArr[3] = x - dx * SPEED_SOLDIER;
+//
+//	yArr[0] = y + dy * SPEED_SOLDIER;
+//	yArr[1] = y + dy * SPEED_SOLDIER;
+//	yArr[2] = y - dy * SPEED_SOLDIER;
+//	yArr[3] = y - dy * SPEED_SOLDIER;
+//
+//	double min = MAXINT;
+//	for (int i = 0; i < 4; i++) {
+//		if (use_security)
+//			cost = security_map[(int)yArr[i]][(int)xArr[i]];
+//		double h = sqrt(pow(xArr[i] - pTarget->getX(), 2) + pow(yArr[i] - pTarget->getY(), 2));
+//		h += cost;
+//		if (min > h && canNPCmove(xArr[i], yArr[i], maze, myMazeNum)) {
+//			chosenX = xArr[i];
+//			chosenY = yArr[i];
+//			min = h;
+//		}
+//	}
+//
+//	if (canNPCmove(chosenX, chosenY, maze, myMazeNum))
+//	{
+//		maze[(int)y][(int)x] = spaceOrPass;
+//		spaceOrPass = maze[(int)chosenY][(int)chosenX];
+//		if (spaceOrPass == PASS) {
+//			isPassing = true;
+//			currentRoom = nullptr;
+//		}
+//		if (isPassing && spaceOrPass == SPACE) {
+//			isPassing = false;
+//		}
+//		maze[(int)chosenY][(int)chosenX] = myMazeNum;
+//		x = chosenX;
+//		y = chosenY;
+//		return true;
+//	}
+//	else {
+//		isMoving = false;
+//	}
+//	movesChased++;
+//	return false;
+//}
+
+void NPC::checkPassOrRoom(Room rooms[NUM_ROOMS])
 {
-	double chosenX, chosenY;
-	double xArr[4], yArr[4];
-
-	double distance = sqrt(pow(pTarget->getX() - x, 2) + pow(pTarget->getY() - y, 2));
-	dx = (pTarget->getX() - x) / distance;
-	dy = (pTarget->getY() - y) / distance;
-	direction_angle = acos(dx);
-
-	xArr[0] = x + dx * SPEED_SOLDIER;
-	xArr[1] = x - dx * SPEED_SOLDIER;
-	xArr[2] = x + dx * SPEED_SOLDIER;
-	xArr[3] = x - dx * SPEED_SOLDIER;
-
-	yArr[0] = y + dy * SPEED_SOLDIER;
-	yArr[1] = y + dy * SPEED_SOLDIER;
-	yArr[2] = y - dy * SPEED_SOLDIER;
-	yArr[3] = y - dy * SPEED_SOLDIER;
-
-	int min = MAXINT;
-	for (int i = 0; i < 4; i++) {
-		double h = sqrt(pow(xArr[i] - pTarget->getX(), 2) + pow(yArr[i] - pTarget->getY(), 2));
-		if (min > h) {
-			chosenX = xArr[i];
-			chosenY = yArr[i];
-			min = h;
-		}
-	}
-
-	if (canNPCmove(chosenX, chosenY, maze, myMazeNum))
-	{
-		movesCahse++;
-		maze[(int)y][(int)x] = spaceOrPass;
-		spaceOrPass = maze[(int)chosenY][(int)chosenX];
-		maze[(int)chosenY][(int)chosenX] = myMazeNum;
-		x = chosenX;
-		y = chosenY;
-		return true;
-	}
-	else {
-		isMoving = false;
-	}
-	return false;
+	if (!isPassing && !currentRoom)
+		currentRoom = &rooms[whichRoom(this, rooms)];
 }
 
 void NPC::drawInfo()

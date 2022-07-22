@@ -26,4 +26,5 @@ public:
 	bool checkAlive(int maze[MSZ][MSZ]);
 	void doSomething(Team* enemy, int maze[MSZ][MSZ], Room rooms[NUM_ROOMS]);
 	NPC* getNpcByIndex(int index);
+	void checkLocation(Room rooms[NUM_ROOMS]);
 };

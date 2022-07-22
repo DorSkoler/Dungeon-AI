@@ -12,7 +12,7 @@ private:
     Grenade *currentGrenade;
 public:
     Soldier();
-    Soldier(double cx, double cy, int t);
+    Soldier(double cx, double cy, int t, Room* r);
     void init();
     void DrawMe(const char* string);
     bool getIsShooting() { return isShooting; };

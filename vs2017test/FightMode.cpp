@@ -10,10 +10,7 @@ void FightMode::Transform(NPC* pn)
 		pn->getCurrentState()->OnEnter(pn);
 	}
 	else {
-		if (fabs(pn->getX() - pn->getTargetX()) < FIRE_RANGE)
-			pn->setIsShooting(true);
-		else
-			pn->setIsShooting(false);
+		
 	}
 }
 

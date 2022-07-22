@@ -1,1 +1,8 @@
-﻿  vs2017test.vcxproj -> C:\Users\User\Desktop\sdfsdf\Final_Project\Debug\vs2017test.exe
+﻿  Functions.cpp
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Functions.cpp(83,6): warning C4101: 'i': unreferenced local variable
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Functions.cpp(165,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Functions.cpp(165,37): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Functions.cpp(164,52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Functions.cpp(164,40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Functions.cpp(216): warning C4715: 'findRoute': not all control paths return a value
+  vs2017test.vcxproj -> C:\Users\User\Desktop\sdfsdf\Final_Project\Debug\vs2017test.exe

@@ -10,12 +10,13 @@ ArmourBearer::ArmourBearer()
 {
 }
 
-ArmourBearer::ArmourBearer(double cx, double cy, int t)
+ArmourBearer::ArmourBearer(double cx, double cy, int t, Room* r)
 {
 	init();
 	x = cx;
 	y = cy;
 	team = t;
+	currentRoom = r;
 }
 
 ArmourBearer::~ArmourBearer()

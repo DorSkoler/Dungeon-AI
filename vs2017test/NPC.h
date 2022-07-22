@@ -8,11 +8,12 @@
 
 class Cell;
 class State;
+class Room;
 class NPC
 {
 protected:
 	int myMazeNum;
-	int movesCahse;
+	int movesChased;
 	double x, y;
 	double xForInfo, yForInfo;
 	double targetX, targetY, gDistance;
@@ -22,9 +23,11 @@ protected:
 	double direction_angle;
 	int spaceOrPass;
 	int grenade_count;
-	bool isMoving, isShooting, isFilling;
+	bool isMoving, isShooting, isFilling, isPassing;
 	bool idle, fighting, fillAmmo, fillHp, helping;
 	NPC* pTarget;
+	Room* currentRoom;
+	Cell* currentPath;
 	std::vector<Magazine*> magazines;
 	State* pCurrentState;
 	State* pInterruptedState;
@@ -42,16 +45,18 @@ public:
 	double getInfoY() { return yForInfo; }
 	double getInfoX() { return xForInfo; }
 	int getTeam() { return team; }
-	int getMovesCahse() { return movesCahse; }
+	int getMovesCahse() { return movesChased; }
 	int getMagazinesLeft() { return magazines.size(); }
 	int getGrenadeCount() { return grenade_count; }
-	bool Move(int maze[MSZ][MSZ]);
+	bool Move(int maze[MSZ][MSZ], bool use_security);
+	Room* getCurrentRoom() { return currentRoom; }
 	NPC* getPTarget() { return pTarget; }
 
 	void setDirectionAngle(double direction) { direction_angle = direction; };
 	State* getCurrentState() { return pCurrentState; }
 	State* getInterruptedState() { return pInterruptedState; }
 	void setCurrentState(State* ps) { pCurrentState = ps; }
+	void checkPassOrRoom(Room rooms[NUM_ROOMS]);
 	void setInterruptedState(State* ps) { pInterruptedState = ps; }
 	void setMazeNum(int num) { myMazeNum = num; }
 	void setIsMoving(bool value) { isMoving = value; }

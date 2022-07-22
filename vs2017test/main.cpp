@@ -28,7 +28,7 @@ double security_map[MSZ][MSZ] = { 0 };
 double visibility_map[MSZ][MSZ] = { 0 };
 
 Room rooms[NUM_ROOMS];
-bool underConstruction = false;
+bool underConstruction = true;
 bool gameOver = false;
 int r1=0, r2=1; // rooms indices
 
@@ -103,7 +103,6 @@ void SetUpTeams() {
 	do {
 		room_teamB = rand() % NUM_ROOMS;
 	} while (room_teamA == room_teamB);
-	room_teamB = room_teamA;
 	cout << "room number " << room_teamB << " for team blue\n";
 	teamB = new Team(TEAM_BLUE, &rooms[room_teamB], maze, BEGIN_COUNT_TEAM_B);
 	teamB->setTeamInfo(20, 40);
@@ -465,25 +464,24 @@ void idle()
 					underConstruction=false;
 			}
 		}
+		else {
+			gameOver = teamA->checkAlive(maze) || teamB->checkAlive(maze);
+			if (gameOver) {
+				if (teamA->checkAlive(maze))
+					cout << "Team B Won The Game!\n";
+				else
+					cout << "Team A Won The Game!\n";
+			}
 
-		gameOver = teamA->checkAlive(maze) || teamB->checkAlive(maze);
-		if (gameOver) {
-			if (teamA->checkAlive(maze))
-				cout << "Team B Won The Game!\n";
-			else
-				cout << "Team A Won The Game!\n";
+			//teamA->doSomething(teamB, maze, rooms);
+			//teamB->doSomething(teamA, maze, rooms);
+
+			// bullet
+			teamA->checkMoveBullets(maze, hits);
+			teamA->gotHit(hits);
+			teamB->checkMoveBullets(maze, hits);
+			teamB->gotHit(hits);
 		}
-
-		teamA->doSomething(teamB, maze, rooms);
-		teamB->doSomething(teamA, maze, rooms);
-		
-	
-		// bullet
-		teamA->checkMoveBullets(maze, hits);
-		teamA->gotHit(hits);
-		teamB->checkMoveBullets(maze, hits);
-		teamB->gotHit(hits);
-
 		glutPostRedisplay(); // indirect call to refresh function (display)
 	}	
 }
@@ -515,34 +513,19 @@ void menu(int choice)
 }
 
 // x and y are in pixels
-//void mouse(int button, int state, int x, int y)
-//{
-//	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
-//	{
-//	
-//		if (teamB->getSoldier2() && teamA->getSoldier2())
-//			getMyTarget(teamB->getSoldier2(), teamA->getSoldier2());
-//
-//		if (teamB->getSoldier2())
-//			teamB->getSoldier2()->shootBullet();
-//
-//		if (teamA->getSoldier1() && teamB->getSoldier2()) {
-//			getMyTarget(teamA->getSoldier1(), teamB->getSoldier2());
-//			teamA->getSoldier1()->shootBullet();
-//		}
-//		if (teamA->getSoldier2() && teamB->getSoldier2()) {
-//			getMyTarget(teamA->getSoldier2(), teamB->getSoldier2());
-//			teamA->getSoldier2()->shootBullet();
-//		}
-//
-//		if (teamB->getSoldier1())
-//			teamB->getSoldier1()->setIsMoving(true);
-//		
-//		glutSetWindow(windowInfo);
-//		displayInfo();
-//		glutSetWindow(windowMain);
-//	}
-//}
+void mouse(int button, int state, int x, int y)
+{
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+	{
+
+		if (teamB->getSoldier2())
+			teamB->getSoldier2()->throwGrenade(maze);
+		
+		glutSetWindow(windowInfo);
+		displayInfo();
+		glutSetWindow(windowMain);
+	}
+}
 
 void main(int argc, char* argv[])
 {
@@ -567,7 +550,7 @@ void main(int argc, char* argv[])
 	glutSetWindow(windowMain);
 	glutDisplayFunc(display); // sets display function as window refresh function
 	glutIdleFunc(idle); // runs all the time when nothing happens
-	/*glutMouseFunc(mouse);*/
+	//glutMouseFunc(mouse);
 	// menu
 	glutCreateMenu(menu);
 	glutAddMenuEntry("Fire Bullet", 1);
