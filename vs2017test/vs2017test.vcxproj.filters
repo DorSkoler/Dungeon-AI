@@ -13,197 +13,63 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Supplies">
-      <UniqueIdentifier>{6a332df9-d9e4-4050-9596-b8db4a26bb73}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\NPC">
-      <UniqueIdentifier>{d103dcc4-2aa3-41f0-bcd3-e121ac857391}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\NPC\ArmourBearer">
-      <UniqueIdentifier>{41661924-4a1e-4d85-ab84-fe98987efeb9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\NPC\Soldier">
-      <UniqueIdentifier>{fa5a4bb2-5fa5-4804-9878-18c9d818ab0e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Structure">
-      <UniqueIdentifier>{1db245d3-0215-4b87-b696-dc4231f2ec8c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\NPC">
-      <UniqueIdentifier>{d1a4a05a-0d71-45d4-8944-5bf9b4535187}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\NPC\ArmourBearer">
-      <UniqueIdentifier>{f90b2f86-b4dc-40cd-8b4d-5ca0c48701ab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\NPC\Soldier">
-      <UniqueIdentifier>{c6590be7-3030-4a0e-b07f-8418a3fde1d8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Structure">
-      <UniqueIdentifier>{0888bf47-3ee9-4c26-8a25-85f7532ab5d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Supplies">
-      <UniqueIdentifier>{dd9fb2c2-25c4-432c-82cc-f03fa9d2dbc6}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArmourBearer.cpp">
-      <Filter>Source Files\NPC\ArmourBearer</Filter>
-    </ClCompile>
-    <ClCompile Include="GoToSoldier.cpp">
-      <Filter>Source Files\NPC\ArmourBearer</Filter>
-    </ClCompile>
-    <ClCompile Include="IdleAB.cpp">
-      <Filter>Source Files\NPC\ArmourBearer</Filter>
-    </ClCompile>
-    <ClCompile Include="Arsenal.cpp">
-      <Filter>Source Files\Supplies</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Source Files\Supplies</Filter>
-    </ClCompile>
-    <ClCompile Include="FightMode.cpp">
-      <Filter>Source Files\NPC\Soldier</Filter>
-    </ClCompile>
-    <ClCompile Include="FillAmmoSoldier.cpp">
-      <Filter>Source Files\NPC\Soldier</Filter>
-    </ClCompile>
-    <ClCompile Include="FillMyHpBar.cpp">
-      <Filter>Source Files\NPC</Filter>
-    </ClCompile>
-    <ClCompile Include="Grenade.cpp">
-      <Filter>Source Files\Supplies</Filter>
-    </ClCompile>
-    <ClCompile Include="HelpTeamSoldier.cpp">
-      <Filter>Source Files\NPC\Soldier</Filter>
-    </ClCompile>
-    <ClCompile Include="IdleSoldier.cpp">
-      <Filter>Source Files\NPC\Soldier</Filter>
-    </ClCompile>
-    <ClCompile Include="Magazine.cpp">
-      <Filter>Source Files\Supplies</Filter>
-    </ClCompile>
     <ClCompile Include="NPC.cpp">
-      <Filter>Source Files\NPC</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Soldier.cpp">
-      <Filter>Source Files\NPC\Soldier</Filter>
+    <ClCompile Include="State.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Run.cpp">
-      <Filter>Source Files\NPC</Filter>
+    <ClCompile Include="GoToForest.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pharmacy.cpp">
-      <Filter>Source Files\Supplies</Filter>
+    <ClCompile Include="GettingWood.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Room.cpp">
-      <Filter>Source Files\Structure</Filter>
+    <ClCompile Include="GoToWarehouse.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CompareCells.cpp">
-      <Filter>Source Files\Structure</Filter>
+    <ClCompile Include="DropWood.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Source Files\Structure</Filter>
+    <ClCompile Include="GoHome.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GoToArsenal.cpp">
-      <Filter>Source Files\NPC\ArmourBearer</Filter>
-    </ClCompile>
-    <ClCompile Include="GoToPharmacy.cpp">
-      <Filter>Source Files\NPC\ArmourBearer</Filter>
-    </ClCompile>
-    <ClCompile Include="Team.cpp">
-      <Filter>Source Files\Structure</Filter>
-    </ClCompile>
-    <ClCompile Include="Functions.cpp">
-      <Filter>Source Files\Structure</Filter>
+    <ClCompile Include="StayAtHome.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArmourBearer.h">
-      <Filter>Header Files\NPC\ArmourBearer</Filter>
-    </ClInclude>
-    <ClInclude Include="IdleAB.h">
-      <Filter>Header Files\NPC\ArmourBearer</Filter>
-    </ClInclude>
-    <ClInclude Include="GoToSoldier.h">
-      <Filter>Header Files\NPC\ArmourBearer</Filter>
-    </ClInclude>
-    <ClInclude Include="Arsenal.h">
-      <Filter>Header Files\Supplies</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Header Files\Supplies</Filter>
-    </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Header Files\Structure</Filter>
-    </ClInclude>
-    <ClInclude Include="CompareCells.h">
-      <Filter>Header Files\Structure</Filter>
-    </ClInclude>
-    <ClInclude Include="Definitions.h">
-      <Filter>Header Files\Structure</Filter>
-    </ClInclude>
-    <ClInclude Include="FightMode.h">
-      <Filter>Header Files\NPC\Soldier</Filter>
-    </ClInclude>
-    <ClInclude Include="FillAmmoSoldier.h">
-      <Filter>Header Files\NPC\Soldier</Filter>
-    </ClInclude>
-    <ClInclude Include="FillMyHpBar.h">
-      <Filter>Header Files\NPC</Filter>
-    </ClInclude>
     <ClInclude Include="glut.h">
-      <Filter>Header Files\Structure</Filter>
-    </ClInclude>
-    <ClInclude Include="Grenade.h">
-      <Filter>Header Files\Supplies</Filter>
-    </ClInclude>
-    <ClInclude Include="HelpTeamSoldier.h">
-      <Filter>Header Files\NPC\Soldier</Filter>
-    </ClInclude>
-    <ClInclude Include="IdleSoldier.h">
-      <Filter>Header Files\NPC\Soldier</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NPC.h">
-      <Filter>Header Files\NPC</Filter>
-    </ClInclude>
-    <ClInclude Include="Magazine.h">
-      <Filter>Header Files\Supplies</Filter>
-    </ClInclude>
-    <ClInclude Include="Pharmacy.h">
-      <Filter>Header Files\Supplies</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files\Structure</Filter>
-    </ClInclude>
-    <ClInclude Include="Room.h">
-      <Filter>Header Files\Structure</Filter>
-    </ClInclude>
-    <ClInclude Include="Run.h">
-      <Filter>Header Files\NPC</Filter>
-    </ClInclude>
-    <ClInclude Include="Soldier.h">
-      <Filter>Header Files\NPC\Soldier</Filter>
-    </ClInclude>
-    <ClInclude Include="GoToArsenal.h">
-      <Filter>Header Files\NPC\ArmourBearer</Filter>
-    </ClInclude>
-    <ClInclude Include="GoToPharmacy.h">
-      <Filter>Header Files\NPC\ArmourBearer</Filter>
-    </ClInclude>
-    <ClInclude Include="Team.h">
-      <Filter>Header Files\Structure</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="State.h">
-      <Filter>Header Files\Structure</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Functions.h">
-      <Filter>Header Files\Structure</Filter>
+    <ClInclude Include="GoToForest.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="vs2017test.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    <ClInclude Include="GettingWood.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GoToWarehouse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DropWood.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GoHome.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StayAtHome.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
