@@ -13,7 +13,6 @@ class NPC
 {
 protected:
 	int myMazeNum;
-	int movesChased;
 	double x, y;
 	double xForInfo, yForInfo;
 	double targetX, targetY, gDistance;
@@ -45,12 +44,13 @@ public:
 	double getInfoY() { return yForInfo; }
 	double getInfoX() { return xForInfo; }
 	int getTeam() { return team; }
-	int getMovesCahse() { return movesChased; }
 	int getMagazinesLeft() { return magazines.size(); }
 	int getGrenadeCount() { return grenade_count; }
-	bool Move(int maze[MSZ][MSZ], bool use_security);
+	bool Move(int maze[MSZ][MSZ]);
+	void findPath(bool use_security, int maze[MSZ][MSZ]);
 	Room* getCurrentRoom() { return currentRoom; }
 	NPC* getPTarget() { return pTarget; }
+	void setPTarget(NPC* pt) { pTarget = pt; }
 
 	void setDirectionAngle(double direction) { direction_angle = direction; };
 	State* getCurrentState() { return pCurrentState; }
@@ -67,7 +67,7 @@ public:
 	void setFillAmmo(bool value) { fillAmmo = value; }
 	void setFillHp(bool value) { fillHp = value; }
 	void setHelping(bool value) { helping = value; }
-	void setDestination(double destX, double destY, NPC* target);
+	void setDestination(bool use_security, int maze[MSZ][MSZ], NPC* target);
 	bool isThisXandYisNPC(int cx, int cy);
 	void setHp(int _hp);
 	void setInfoXandY(int cx, int cy) { xForInfo = cx; yForInfo = cy; }

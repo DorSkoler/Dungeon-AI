@@ -11,12 +11,13 @@ const int ARSENAL = 3;
 const int PHARMACY = 4;
 const int BEGIN_COUNT_TEAM_A = 5;
 const int BEGIN_COUNT_TEAM_B = 8;
+const int PATH = 11;
 
 const int NUM_BULLETS_PER_MAGAZINE = 5;
 const int NUM_BULLETS_PER_GRENADE = 32;
 
 // for soldier
-const double SPEED_SOLDIER = 0.01;
+const double SPEED_SOLDIER = 0.05;
 const int MAX_HP_SOLDIER = 500;
 const int MAX_MAGAZINE_SOLDIER = 3;
 const int MAX_GRENADES_SOLDIER = 3;

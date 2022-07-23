@@ -30,7 +30,7 @@ double getDistance(NPC* source, NPC* target) {
 
 void getMyTarget(NPC* pn, NPC* pTarget)
 {
-	pn->setDestination(pTarget->getX(), pTarget->getY(), pTarget);
+	pn->setPTarget(pTarget);
 	pn->setDirectionAngle(getDirectionAngle(pn, pTarget));
 }
 
@@ -52,7 +52,7 @@ NPC* getTarget(Room rooms[NUM_ROOMS], Team* enemy, NPC* me) {
 
 	for (int i = 0; i < 3; i++) {
 		int room = whichRoom(enemy->getNpcByIndex(i), rooms);
-		if ( room > -1) {
+		if (room > -1) {
 			double current = getDistance(me, enemy->getNpcByIndex(i));
 			if (targetToChase > current) {
 				targetToChase = current;
@@ -63,9 +63,24 @@ NPC* getTarget(Room rooms[NUM_ROOMS], Team* enemy, NPC* me) {
 	return target;
 }
 
+bool isSameRoom(Room* room1, Room* room2) {
+	return room1->getCenterX() == room2->getCenterX() && room1->getCenterY() == room2->getCenterY();
+}
+
+NPC* getRoomTarget(Room rooms[NUM_ROOMS], NPC* me) {
+	NPC* target = nullptr;
+	int random = 0;
+	do {
+		random = rand() % NUM_ROOMS;
+
+	} while (isSameRoom(&rooms[random], me->getCurrentRoom()));
+	target = new NPC(rooms[random].getCenterX(), rooms[random].getCenterY(), 0);
+	return target;
+}
+
 void CreateSecurityMap(double security_map[MSZ][MSZ], int maze[MSZ][MSZ])
 {
-	int num_simulations = 250;
+	int num_simulations = 300;
 	double damage = 0.01;
 	int i;
 	Grenade* g;
@@ -79,7 +94,7 @@ void CreateSecurityMap(double security_map[MSZ][MSZ], int maze[MSZ][MSZ])
 
 void CreateVisibilityMap(NPC* pn, int maze[MSZ][MSZ], double visibility_map[MSZ][MSZ])
 {
-	int num_simulations = 100;
+	int num_simulations = 360;
 	int i;
 	std::vector<Bullet*> bullets;
 	double teta = 2 * 3.14 / num_simulations;
@@ -92,17 +107,21 @@ void CreateVisibilityMap(NPC* pn, int maze[MSZ][MSZ], double visibility_map[MSZ]
 }
 
 void CheckNeighbor(int row, int col, Cell* pcurrent, std::priority_queue <Cell, std::vector<Cell>, CompareCells>& pq,
-	std::vector <Cell>& grays, std::vector <Cell>& blacks, int maze[MSZ][MSZ], bool use_security)
+	std::vector <Cell>& grays, std::vector <Cell>& blacks, int maze[MSZ][MSZ], double security_map[MSZ][MSZ], bool use_security)
 {
-	double security_map[MSZ][MSZ] = { 0 };
-	if (use_security)
-		CreateSecurityMap(security_map, maze);
 	double cost;
 	std::vector <Cell>::iterator itrb;
 	std::vector <Cell>::iterator itrg;
 
-	if (!(maze[row][col] == SPACE || maze[row][col] == PASS)) cost = MAXINT;
-	cost = security_map[row][col];
+	if (use_security) {
+		if (!(maze[row][col] == SPACE || maze[row][col] == PASS)) cost = MAXINT;
+		else cost = security_map[row][col];
+	}
+	else {
+		if (!(maze[row][col] == SPACE || maze[row][col] == PASS)) cost = MAXINT;
+		else cost = 1;
+	}
+		
 
 	// create neighbor cell
 	Cell* pn = new Cell(row, col, pcurrent, pcurrent->getG() + cost, pcurrent->getTargetRow(), pcurrent->getTargetCol());
@@ -149,17 +168,21 @@ void CheckNeighbor(int row, int col, Cell* pcurrent, std::priority_queue <Cell, 
 
 }
 
-void RestorePath(Cell* ps, int maze[MSZ][MSZ])
+Cell* getStartCell(Cell* ps, int maze[MSZ][MSZ])
 {
+	Cell* pn = nullptr;
 	while (ps->getParent() != nullptr)
 	{
-		if (maze[ps->getRow()][ps->getCol()] == SPACE)
-			maze[ps->getRow()][ps->getCol()] = PASS;
+		//maze[ps->getRow()][ps->getCol()] = PASS;
+		pn = ps;
 		ps = ps->getParent();
+		ps->setChild(pn);
 	}
+	return ps->getChild();
 }
 
-Cell* findRoute(NPC* pn, int maze[MSZ][MSZ], bool use_security)
+
+Cell* findRoute(NPC* pn, int maze[MSZ][MSZ], double security_map[MSZ][MSZ], bool use_security)
 {
 	Cell* startingCell = new Cell(pn->getY(), pn->getX(),
 		nullptr, 0, pn->getPTarget()->getY(), pn->getPTarget()->getX());
@@ -187,6 +210,7 @@ Cell* findRoute(NPC* pn, int maze[MSZ][MSZ], bool use_security)
 		// check if current is target
 		if (pcurrent->getRow() == pn->getPTarget()->getY() && pcurrent->getCol() == pn->getPTarget()->getX())
 		{
+			std::cout << "found path\n";
 			return pcurrent;
 		}
 		// remove current from pq and paint it black (remove it from grays)
@@ -196,6 +220,7 @@ Cell* findRoute(NPC* pn, int maze[MSZ][MSZ], bool use_security)
 		itr = find(grays.begin(), grays.end(), *pcurrent); // Cell must have operator ==
 		if (itr == grays.end()) // current cell wasn't found: ERROR
 		{
+			std::cout << "error 1\n";
 			return nullptr;
 		}
 		grays.erase(itr);
@@ -204,13 +229,15 @@ Cell* findRoute(NPC* pn, int maze[MSZ][MSZ], bool use_security)
 		currentRow = pcurrent->getRow();
 		currentCol = pcurrent->getCol();
 		if (currentRow > 0) // UP
-			CheckNeighbor(currentRow - 1, currentCol, pcurrent, pq, grays, blacks, maze, use_security);
+			CheckNeighbor(currentRow - 1, currentCol, pcurrent, pq, grays, blacks, maze, security_map, use_security);
 		if (currentRow < MSZ - 1) // DOWN
-			CheckNeighbor(currentRow + 1, currentCol, pcurrent, pq, grays, blacks, maze, use_security);
+			CheckNeighbor(currentRow + 1, currentCol, pcurrent, pq, grays, blacks, maze, security_map, use_security);
 		if (currentCol > 0) // LEFT
-			CheckNeighbor(currentRow, currentCol - 1, pcurrent, pq, grays, blacks, maze, use_security);
+			CheckNeighbor(currentRow, currentCol - 1, pcurrent, pq, grays, blacks, maze, security_map, use_security);
 		if (currentCol < MSZ - 1) // RIGHT
-			CheckNeighbor(currentRow, currentCol + 1, pcurrent, pq, grays, blacks, maze, use_security);
+			CheckNeighbor(currentRow, currentCol + 1, pcurrent, pq, grays, blacks, maze, security_map, use_security);
 	} // while
 	// We shouldn't reach this point normally
+	std::cout << "error 2\n";
 }
+

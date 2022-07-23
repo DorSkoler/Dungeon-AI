@@ -355,6 +355,9 @@ void ShowMaze()
 			case PASS:
 				glColor3d(0.5, 0.7, 0.5);
 				break;
+			case PATH:
+				glColor3d(0.8, 0.2, 0.5);
+				break;
 			case SPACE:
 				double d = security_map[i][j];
 				double v = visibility_map[i][j];
@@ -473,8 +476,8 @@ void idle()
 					cout << "Team A Won The Game!\n";
 			}
 
-			//teamA->doSomething(teamB, maze, rooms);
-			//teamB->doSomething(teamA, maze, rooms);
+			teamA->doSomething(teamB, maze, rooms);
+			teamB->doSomething(teamA, maze, rooms);
 
 			// bullet
 			teamA->checkMoveBullets(maze, hits);
@@ -486,11 +489,22 @@ void idle()
 	}	
 }
 
+void searchRoute() {
+	cout << "searching route\n";
+	teamB->getSoldier2()->setDestination(false, maze, teamA->getSoldier1());
+	if (teamB->getSoldier2())
+		teamB->getSoldier2()->Move(maze);
+
+	glutSetWindow(windowInfo);
+	displayInfo();
+	glutSetWindow(windowMain);
+}
+
 void menu(int choice)
 {
 	if (choice == 1) // fire bullet
 	{
-		
+		searchRoute();
 	}
 	else if (choice == 2) // grenade
 	{
@@ -518,8 +532,10 @@ void mouse(int button, int state, int x, int y)
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
 
+		cout << "searching route\n";
+		teamB->getSoldier2()->setDestination(false, maze, teamA->getSoldier1());
 		if (teamB->getSoldier2())
-			teamB->getSoldier2()->throwGrenade(maze);
+			teamB->getSoldier2()->Move(maze);
 		
 		glutSetWindow(windowInfo);
 		displayInfo();

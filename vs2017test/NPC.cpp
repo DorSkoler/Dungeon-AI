@@ -68,19 +68,19 @@ NPC::NPC()
 	spaceOrPass = SPACE;
 }
 
-void NPC::setDestination(double destX, double destY, NPC* target)
+void NPC::setDestination(bool use_security, int maze[MSZ][MSZ], NPC* target)
 {
 	pTarget = target;
 	double distance;
 	gDistance = 0;
-	movesChased = 0;
-	targetX = destX;
-	targetY = destY;
+	targetX = target->getX();
+	targetY = target->getY();
 	distance = sqrt(pow(targetX - x, 2) + pow(targetY - y, 2));
 	// [dx,dy] must be vector of length 1 to the direction to target
 	dx = (targetX - x) / distance;
 	dy = (targetY - y) / distance;
 	direction_angle = acos(dx);
+	findPath(use_security, maze);
 }
 
 bool NPC::isThisXandYisNPC(int cx, int cy)
@@ -90,80 +90,41 @@ bool NPC::isThisXandYisNPC(int cx, int cy)
 
 bool canNPCmove(int cx, int cy, int maze[MSZ][MSZ], int mazeNum)
 {
-	if (maze[(int)cy][(int)cx] == PASS)
+	if (maze[cy][cx] == PASS)
 		return true;
-	if (maze[(int)cy][(int)cx] == SPACE)
+	if (maze[cy][cx] == SPACE)
 		return true;
-	if (maze[(int)cy][(int)cx] == mazeNum)
+	if (maze[cy][cx] == mazeNum)
 		return true;
 	return false;
 }
 
-bool NPC::Move(int maze[MSZ][MSZ], bool use_security) {
-	Cell* ps = findRoute(this, maze, true);
-	RestorePath(ps, maze);
-	return true;
+bool NPC::Move(int maze[MSZ][MSZ]) {
+	if (canNPCmove(currentPath->getCol(), currentPath->getRow(), maze, myMazeNum)) {
+		maze[(int)y][(int)x] = spaceOrPass;
+		spaceOrPass = maze[currentPath->getRow()][currentPath->getCol()];
+		x = currentPath->getCol();
+		y = currentPath->getRow();
+		maze[(int)y][(int)x] = myMazeNum;
+		currentPath = currentPath->getChild();
+		return true;
+	}
+	return false;
 }
 
-//bool NPC::Move(int maze[MSZ][MSZ], bool use_security)
-//{
-//	double security_map[MSZ][MSZ] = {0};
-//	if (use_security)
-//		CreateSecurityMap(currentRoom, security_map, maze);
-//
-//	double chosenX, chosenY, cost = 0;
-//	double xArr[4], yArr[4];
-//
-//	double distance = sqrt(pow(pTarget->getX() - x, 2) + pow(pTarget->getY() - y, 2));
-//	dx = (pTarget->getX() - x) / distance;
-//	dy = (pTarget->getY() - y) / distance;
-//	direction_angle = acos(dx);
-//
-//	xArr[0] = x + dx * SPEED_SOLDIER;
-//	xArr[1] = x - dx * SPEED_SOLDIER;
-//	xArr[2] = x + dx * SPEED_SOLDIER;
-//	xArr[3] = x - dx * SPEED_SOLDIER;
-//
-//	yArr[0] = y + dy * SPEED_SOLDIER;
-//	yArr[1] = y + dy * SPEED_SOLDIER;
-//	yArr[2] = y - dy * SPEED_SOLDIER;
-//	yArr[3] = y - dy * SPEED_SOLDIER;
-//
-//	double min = MAXINT;
-//	for (int i = 0; i < 4; i++) {
-//		if (use_security)
-//			cost = security_map[(int)yArr[i]][(int)xArr[i]];
-//		double h = sqrt(pow(xArr[i] - pTarget->getX(), 2) + pow(yArr[i] - pTarget->getY(), 2));
-//		h += cost;
-//		if (min > h && canNPCmove(xArr[i], yArr[i], maze, myMazeNum)) {
-//			chosenX = xArr[i];
-//			chosenY = yArr[i];
-//			min = h;
-//		}
-//	}
-//
-//	if (canNPCmove(chosenX, chosenY, maze, myMazeNum))
-//	{
-//		maze[(int)y][(int)x] = spaceOrPass;
-//		spaceOrPass = maze[(int)chosenY][(int)chosenX];
-//		if (spaceOrPass == PASS) {
-//			isPassing = true;
-//			currentRoom = nullptr;
-//		}
-//		if (isPassing && spaceOrPass == SPACE) {
-//			isPassing = false;
-//		}
-//		maze[(int)chosenY][(int)chosenX] = myMazeNum;
-//		x = chosenX;
-//		y = chosenY;
-//		return true;
-//	}
-//	else {
-//		isMoving = false;
-//	}
-//	movesChased++;
-//	return false;
-//}
+void NPC::findPath(bool use_security, int maze[MSZ][MSZ]) {
+	double security_map[MSZ][MSZ] = { 0 };
+	if (use_security) {
+		CreateSecurityMap(security_map, maze);
+		Cell* nextRoute = findRoute(this, maze, security_map, use_security);
+		currentPath = getStartCell(nextRoute, maze);
+	}
+	else {
+		Cell* nextRoute = findRoute(this, maze, security_map, use_security);
+		currentPath = getStartCell(nextRoute, maze);
+	}
+}
+
 
 void NPC::checkPassOrRoom(Room rooms[NUM_ROOMS])
 {

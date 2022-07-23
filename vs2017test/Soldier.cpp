@@ -123,36 +123,41 @@ void Soldier::throwGrenade(int maze[MSZ][MSZ])
 	}
 }
 
+
+
 void Soldier::doSomething(Team* enemy, int maze[MSZ][MSZ], Room rooms[NUM_ROOMS])
 {
 	NPC* target = nullptr;
 	int myRoom = whichRoom(this, rooms);
 	if (idle) {
-		if (movesChased > 50) {
-			int roomNum;
-			do {
-				roomNum = rand() % NUM_ROOMS;
-			} while (roomNum != myRoom);
-			NPC* roomTarget = new NPC(rooms[roomNum].getCenterX(), rooms[roomNum].getCenterY(), 0);
-			setDestination(roomTarget->getX(), roomTarget->getY(), roomTarget);
-			movesChased = 0;
-		}
+		
 		if (isMoving && pTarget) {
-			this->Move(maze, false);
+			if (!this->Move(maze)) {
+				pTarget = getRoomTarget(rooms, this);
+			}
+
 			if (fabs(x - pTarget->getX()) < STOP_NEAR_ENEMY_RANGE && fabs(y - pTarget->getY()) < STOP_NEAR_ENEMY_RANGE)
 				isMoving = false;
 			else
 				isMoving = true;
 
 			if (fabs(x - pTarget->getX()) < FIGHTING_RANGE && fabs(y - pTarget->getY()) < FIGHTING_RANGE) {
-				std::cout << "change to fight\n";
-				pCurrentState->Transform(this);
+				if (isPassing) {
+					pTarget = getRoomTarget(rooms, this);
+				}
+
+				if (myRoom == whichRoom(pTarget, rooms)) {
+					std::cout << "change to fight\n";
+					pCurrentState->Transform(this);
+				}
 			}
 		}
 
-		target = getTarget(rooms, enemy, this);
-		if (target) {
-			setDestination(target->getX(), target->getY(), target);
+		if (!pTarget) {
+			target = getTarget(rooms, enemy, this);
+			if (target) {
+				setDestination(false, maze, target);
+			}
 		}
 
 		if (hp < MAX_HP_SOLDIER) {
@@ -161,12 +166,36 @@ void Soldier::doSomething(Team* enemy, int maze[MSZ][MSZ], Room rooms[NUM_ROOMS]
 	}
 
 	if (fighting) {
-		
-		if (fabs(x - pTarget->getX()) > FIGHTING_RANGE && fabs(y - pTarget->getY()) > FIGHTING_RANGE) {
-			std::cout << "stopped fighting\n";
-			pCurrentState->Transform(this);
+
+		// check move
+		if (isMoving && pTarget) {
+			if (!this->Move(maze)) {
+				pTarget = nullptr;
+				pCurrentState->Transform(this);
+			}
+			if (fabs(x - pTarget->getX()) < STOP_NEAR_ENEMY_RANGE && fabs(y - pTarget->getY()) < STOP_NEAR_ENEMY_RANGE)
+				isMoving = false;
+			else
+				isMoving = true;
 		}
 
+		// check if in pass
+		if (maze[(int)y][(int)x] == PASS)
+			return;
+
+		// check if target exist
+		if (!pTarget) {
+			pCurrentState->Transform(this);
+			return;
+		}
+		
+		// check if enemy near
+		if (fabs(x - pTarget->getX()) > FIGHTING_RANGE && fabs(y - pTarget->getY()) > FIGHTING_RANGE) {
+			pCurrentState->Transform(this);
+			return;
+		}
+
+		// check num of enemies in same room
 		int numNpcSameRoom = 0;
 		for (int i = 0; i < 3; i++) {
 			int room = whichRoom(enemy->getNpcByIndex(i), rooms);
@@ -174,22 +203,27 @@ void Soldier::doSomething(Team* enemy, int maze[MSZ][MSZ], Room rooms[NUM_ROOMS]
 				numNpcSameRoom++;
 			}
 		}
+
+		// check visibilty
 		double visibility_map[MSZ][MSZ] = { 0 };
 		CreateVisibilityMap(this, maze, visibility_map);
-		if (visibility_map[(int)pTarget->getY()][(int)pTarget->getX()] == 0) {
+
+		if (visibility_map[(int)pTarget->getY()][(int)pTarget->getX()] == 0)
 			isShooting = false;
-		}
+		else
+			isShooting = true;
+
 		if (isShooting) {
-			if (numNpcSameRoom > 1)
-				shootBullet();
+			if (numNpcSameRoom > 1 && grenade_count > 0)
+				throwGrenade(maze);
 			else
 				shootBullet();
 		}
 
 		// check if target still alive
-		target = getTarget(rooms, enemy, this);
+		/*target = getTarget(rooms, enemy, this);
 		if (!target) {
 			pCurrentState->Transform(this);
-		}
+		}*/
 	}
 }

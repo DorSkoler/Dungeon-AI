@@ -5,6 +5,7 @@ private:
 	int row, col;
 	int targetRow, targetCol;
 	Cell* parent;
+	Cell* child;
 	double f, g, h;
 public:
 	Cell();
@@ -16,6 +17,8 @@ public:
 	int getTargetRow() { return row; }
 	int getTargetCol() { return col; }
 	Cell* getParent() { return parent; }
+	Cell* getChild() { return child; }
+	void setChild(Cell* c) { child = c; }
 	void ComputeH();
 	void ComputeF() { f = g + h; }
 	double getF() { return f; }
