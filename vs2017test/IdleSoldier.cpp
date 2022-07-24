@@ -12,24 +12,21 @@ void IdleSoldier::Transform(NPC* pn)
 		pn->setCurrentState(new FillMyHpBar());
 		pn->getCurrentState()->OnEnter(pn);
 	}
-	else if(pn->getPTarget()) {
-		if (fabs(pn->getX() - pn->getTargetX()) < FIGHTING_RANGE && fabs(pn->getY() - pn->getTargetY()) < FIGHTING_RANGE) {
-			std::cout << "here\n";
+	else {
+		//if (fabs(pn->getX() - pn->getTargetX()) < FIGHTING_RANGE && fabs(pn->getY() - pn->getTargetY()) < FIGHTING_RANGE) {
 			pn->setInterruptedState(this);
 			pn->setCurrentState(new FightMode());
 			pn->getCurrentState()->OnEnter(pn);
-		}
+		//}
 	}
 }
 
 void IdleSoldier::OnEnter(NPC* pn)
 {
-	pn->setIsMoving(true);
 	pn->setIdle(true);
 }
 
 void IdleSoldier::OnExit(NPC* pn)
 {
-	pn->setIsMoving(false);
 	pn->setIdle(false);
 }

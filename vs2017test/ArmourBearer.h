@@ -15,7 +15,7 @@ public:
     void DrawMe();
     void DrawMyHp();
     void doSomething(int maze[MSZ][MSZ]);
-
+    
     bool getSupplies(int g, int m);
 };
 

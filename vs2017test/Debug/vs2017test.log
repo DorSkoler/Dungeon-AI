@@ -1,8 +1,1 @@
-﻿  Soldier.cpp
-C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.cpp(37,27): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.cpp(37,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.cpp(59,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.cpp(59,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.cpp(65,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\User\Desktop\sdfsdf\Final_Project\vs2017test\Soldier.cpp(65,25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-  vs2017test.vcxproj -> C:\Users\User\Desktop\sdfsdf\Final_Project\Debug\vs2017test.exe
+﻿  vs2017test.vcxproj -> C:\Users\User\Desktop\sdfsdf\Final_Project\Debug\vs2017test.exe

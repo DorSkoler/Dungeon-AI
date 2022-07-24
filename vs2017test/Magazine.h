@@ -17,5 +17,6 @@ public:
 	Bullet* getHit() { return hit; };
 	int getBulletsLeft() { return bullets.size(); };
 	bool isEmpty() { return bullets.empty(); };
+	void popLastBullet() { bullets.pop_back(); }
 };
 

@@ -35,6 +35,8 @@ void getMyTarget(NPC* pn, NPC* pTarget)
 }
 
 int whichRoom(NPC* pn, Room rooms[NUM_ROOMS]) {
+	if (!pn)
+		return -1;
 	for (int i = 0; i < NUM_ROOMS; i++) {
 		if (pn->getX() <= (rooms[i].getCenterX() + rooms[i].getWidth() / 2) && pn->getX() >= (rooms[i].getCenterX() - rooms[i].getWidth() / 2)) {
 			if (pn->getY() <= (rooms[i].getCenterY() + rooms[i].getHeight() / 2) && pn->getY() >= (rooms[i].getCenterY() - rooms[i].getHeight() / 2)) {
@@ -210,7 +212,6 @@ Cell* findRoute(NPC* pn, int maze[MSZ][MSZ], double security_map[MSZ][MSZ], bool
 		// check if current is target
 		if (pcurrent->getRow() == pn->getPTarget()->getY() && pcurrent->getCol() == pn->getPTarget()->getX())
 		{
-			std::cout << "found path\n";
 			return pcurrent;
 		}
 		// remove current from pq and paint it black (remove it from grays)

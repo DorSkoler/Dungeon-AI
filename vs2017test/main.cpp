@@ -476,14 +476,16 @@ void idle()
 					cout << "Team A Won The Game!\n";
 			}
 
-			teamA->doSomething(teamB, maze, rooms);
-			teamB->doSomething(teamA, maze, rooms);
+			teamA->doSomething(teamB, maze, rooms, hits);
+			teamB->doSomething(teamA, maze, rooms, hits);
 
 			// bullet
 			teamA->checkMoveBullets(maze, hits);
-			teamA->gotHit(hits);
 			teamB->checkMoveBullets(maze, hits);
+			teamA->gotHit(hits);
 			teamB->gotHit(hits);
+			teamA->checkLocation(rooms);
+			teamB->checkLocation(rooms);
 		}
 		glutPostRedisplay(); // indirect call to refresh function (display)
 	}	
@@ -533,9 +535,10 @@ void mouse(int button, int state, int x, int y)
 	{
 
 		cout << "searching route\n";
-		teamB->getSoldier2()->setDestination(false, maze, teamA->getSoldier1());
+		teamB->getSoldier2()->setPTarget(teamA->getSoldier1());
+		//teamB->getSoldier2()->setDestination(false, maze, teamA->getSoldier1());
 		if (teamB->getSoldier2())
-			teamB->getSoldier2()->Move(maze);
+			teamB->getSoldier2()->throwGrenade(maze);
 		
 		glutSetWindow(windowInfo);
 		displayInfo();

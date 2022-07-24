@@ -11,7 +11,7 @@ Grenade::Grenade(double x, double y, int t, int sX, int sY)
 	this->x = x;
 	this->y = y;
 	for (int i = 0; i < NUM_BULLETS_PER_GRENADE; i++)
-		bullets[i] = new Bullet(x, y, i*teta, t, sX, sY);
+		bullets[i] = new Bullet(sX, sY, i*teta, t, sX, sY);
 
 	isExploded = false;
 }

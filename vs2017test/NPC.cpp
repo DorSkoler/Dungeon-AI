@@ -100,6 +100,8 @@ bool canNPCmove(int cx, int cy, int maze[MSZ][MSZ], int mazeNum)
 }
 
 bool NPC::Move(int maze[MSZ][MSZ]) {
+	if (!currentPath)
+		return false;
 	if (canNPCmove(currentPath->getCol(), currentPath->getRow(), maze, myMazeNum)) {
 		maze[(int)y][(int)x] = spaceOrPass;
 		spaceOrPass = maze[currentPath->getRow()][currentPath->getCol()];
@@ -123,6 +125,15 @@ void NPC::findPath(bool use_security, int maze[MSZ][MSZ]) {
 		Cell* nextRoute = findRoute(this, maze, security_map, use_security);
 		currentPath = getStartCell(nextRoute, maze);
 	}
+}
+
+void NPC::setCurrentBullet()
+{
+	if (magazines.empty())
+		return;
+	Magazine* pm = *(magazines.begin());
+	if (pm->getBulletsLeft() > 0)
+		pm->popLastBullet();
 }
 
 

@@ -20,18 +20,18 @@ const int NUM_BULLETS_PER_GRENADE = 32;
 const double SPEED_SOLDIER = 0.05;
 const int MAX_HP_SOLDIER = 500;
 const int MAX_MAGAZINE_SOLDIER = 3;
-const int MAX_GRENADES_SOLDIER = 3;
+const int MAX_GRENADES_SOLDIER = 9;
 const int HP_UP_SOLDIER = 200;
 const int GRENADE_THROW_RANGE = 5;
-const int FIGHTING_RANGE = 5;
+const int FIGHTING_RANGE = 7;
 const int STOP_NEAR_ENEMY_RANGE = 2;
 
 // for armour bearer
 const double SPEED_AB = 0.02;
 const int MAX_HP_AB = 300;
-const int MAX_MAGAZINE_AB = 5;
-const int MAX_GRENADES_AB = 3;
-const int HP_POTIONS_AB = 3;
+const int MAX_MAGAZINE_AB = 0;
+const int MAX_GRENADES_AB = 0;
+const int HP_POTIONS_AB = 6;
 
 // teams
 const int TEAM_RED = 1;

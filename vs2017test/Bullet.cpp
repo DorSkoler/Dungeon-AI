@@ -17,6 +17,8 @@ Bullet::Bullet(double x, double y, double angle, int t, int sX, int sY)
 	this->x = x;
 	this->y = y;
 	direction_angle = angle;
+	dx = cos(direction_angle);
+	dy = sin(direction_angle);
 	isMoving = 0;
 	bullet_team = t;
 	sourceX = sX;

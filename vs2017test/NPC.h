@@ -9,6 +9,7 @@
 class Cell;
 class State;
 class Room;
+class Soldier;
 class NPC
 {
 protected:
@@ -22,11 +23,14 @@ protected:
 	double direction_angle;
 	int spaceOrPass;
 	int grenade_count;
-	bool isMoving, isShooting, isFilling, isPassing;
-	bool idle, fighting, fillAmmo, fillHp, helping;
+	bool isMoving, isShooting, isFilling, isPassing, isEnemyTarget;
+	bool idle, fighting, fillAmmo, fillHp, helping, clearShot;
 	NPC* pTarget;
 	Room* currentRoom;
 	Cell* currentPath;
+	Grenade* currentGrenade;
+	Soldier* s1;
+	Soldier* s2;
 	std::vector<Magazine*> magazines;
 	State* pCurrentState;
 	State* pInterruptedState;
@@ -40,6 +44,9 @@ public:
 	double getTargetY() { return targetY; }
 	double getX() { return x; }
 	double getY() { return y; }
+	void setSoldiers(Soldier* _s1, Soldier* _s2) { s1 = _s1; s2 = _s2; }
+	Soldier* getSoldier1() { return s1; }
+	Soldier* getSoldier2() { return s2; }
 	double getAngle() { return direction_angle; }
 	double getInfoY() { return yForInfo; }
 	double getInfoX() { return xForInfo; }
@@ -51,7 +58,8 @@ public:
 	Room* getCurrentRoom() { return currentRoom; }
 	NPC* getPTarget() { return pTarget; }
 	void setPTarget(NPC* pt) { pTarget = pt; }
-
+	void setCurrentBullet();
+	void setCurrentGrenade(Grenade* g) { currentGrenade = g; }
 	void setDirectionAngle(double direction) { direction_angle = direction; };
 	State* getCurrentState() { return pCurrentState; }
 	State* getInterruptedState() { return pInterruptedState; }

@@ -10,6 +10,10 @@ Magazine::Magazine()
 
 void Magazine::fire(double x, double y, double angle, int t, int sX, int sY)
 {
+	if (bullets.back()) {
+		if (bullets.back()->getIsMoving() == 2)
+			return;
+	}
 	if (!bullets.empty()) {
 		bullets.pop_back();
 		bullets.push_back(new Bullet(x, y, angle, t, sX, sY));

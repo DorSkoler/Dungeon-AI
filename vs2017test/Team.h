@@ -24,7 +24,7 @@ public:
 	void checkMoveBullets(int maze[MSZ][MSZ], int hits[NUM_PLAYERS]);
 	void checkShowBullets();
 	bool checkAlive(int maze[MSZ][MSZ]);
-	void doSomething(Team* enemy, int maze[MSZ][MSZ], Room rooms[NUM_ROOMS]);
+	void doSomething(Team* enemy, int maze[MSZ][MSZ], Room rooms[NUM_ROOMS], int hits[NUM_PLAYERS]);
 	NPC* getNpcByIndex(int index);
 	void checkLocation(Room rooms[NUM_ROOMS]);
 };

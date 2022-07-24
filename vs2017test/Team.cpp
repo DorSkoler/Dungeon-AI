@@ -30,6 +30,7 @@ Team::Team(int t, Room* r, int maze[MSZ][MSZ], int begin)
 	maze[cy][cx] = begin+2;
 	s2 = new Soldier(cx, cy, t, r);
 	s2->setMazeNum(begin+2);
+	ab->setSoldiers(s1, s2);
 }
 
 void Team::drawTeam()
@@ -118,8 +119,6 @@ void Team::drawInfo()
 
 void Team::checkMoveBullets(int maze[MSZ][MSZ], int hits[NUM_PLAYERS])
 {
-	Bullet* hit1 = nullptr, *hit2 = nullptr;
-	std::vector<Bullet*> hittingBullets;
 	if (s1) {
 		s1->MoveBullets(maze, hits);
 	}
@@ -176,12 +175,12 @@ bool Team::checkAlive(int maze[MSZ][MSZ])
 	return allDead;
 }
 
-void Team::doSomething(Team* enemy ,int maze[MSZ][MSZ], Room rooms[NUM_ROOMS])
+void Team::doSomething(Team* enemy ,int maze[MSZ][MSZ], Room rooms[NUM_ROOMS], int hits[NUM_PLAYERS])
 {
 	if (s1)
-		s1->doSomething(enemy ,maze, rooms);
+		s1->doSomething(enemy ,maze, rooms, hits);
 	if (s2)
-		s2->doSomething(enemy, maze, rooms);
+		s2->doSomething(enemy, maze, rooms, hits);
 	//if (ab)
 	//	ab->doSomething(maze);
 }
